@@ -4,8 +4,10 @@ import { useLocation } from "react-router-dom";
 const useRoutes = () => {
   const { pathname } = useLocation();
 
-  const routes = useMemo(
-    () => [
+  const routes = useMemo(() => {
+    const isShowWithSlug = pathname.startsWith("/shop/");
+
+    return [
       {
         path: "/",
         label: "Home",
@@ -17,9 +19,13 @@ const useRoutes = () => {
         label: "Shop",
         active: pathname === "/shop",
       },
-    ],
-    [pathname]
-  );
+      isShowWithSlug && {
+        path: pathname,
+        label: pathname.split("/").pop().replace(/-/g, " "),
+        active: true,
+      },
+    ];
+  }, [pathname]);
 
   return routes;
 };

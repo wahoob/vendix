@@ -101,6 +101,15 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       transformResponse: (result) => result.data.deals,
     }),
+
+    getProductBySlug: builder.query({
+      query: ({ slug }) => ({
+        url: `/products/slug/${slug}`,
+        validateStatus: (response, result) =>
+          response.status === 200 && !result.isError,
+      }),
+      transformResponse: (response) => response.data.product,
+    }),
   }),
 });
 
@@ -111,4 +120,5 @@ export const {
   useGetBrandsQuery,
   useGetPriceRageQuery,
   useGetDealsQuery,
+  useGetProductBySlugQuery,
 } = productsApiSlice;

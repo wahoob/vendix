@@ -1,6 +1,6 @@
 import { Checkbox } from "../";
 
-const OptionItem = ({ label, id, isChecked, onCheckboxChange }) => {
+const SelectableOption = ({ label, id, isChecked, onCheckboxChange }) => {
   return (
     <div className="flex gap-2">
       <Checkbox
@@ -16,4 +16,4 @@ const OptionItem = ({ label, id, isChecked, onCheckboxChange }) => {
   );
 };
 
-export default OptionItem;
+export default SelectableOption;

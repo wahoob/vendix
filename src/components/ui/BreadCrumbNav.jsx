@@ -22,7 +22,7 @@ const BreadCrumbNav = () => {
             )}
           >
             <i className={classNames("text-sm", route.icon)}></i>
-            {item.label}
+            <span className="capitalize">{item.label}</span>
           </Link>
         ),
       });
@@ -31,7 +31,7 @@ const BreadCrumbNav = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container max-sm:hidden">
       <BreadCrumb
         model={breadcrumbItems}
         pt={{

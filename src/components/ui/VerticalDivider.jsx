@@ -1,7 +1,16 @@
 import { Divider } from "primereact/divider";
+import { classNames } from "primereact/utils";
 
-const VerticalDivider = () => {
-  return <Divider layout="vertical" className="h-[10px] bg-[#DEDFE2]" />;
+const VerticalDivider = ({ fullHeight = false }) => {
+  return (
+    <Divider
+      layout="vertical"
+      className={classNames("bg-[#DEDFE2]", {
+        "h-[10px]": !fullHeight,
+        "h-full": fullHeight,
+      })}
+    />
+  );
 };
 
 export default VerticalDivider;

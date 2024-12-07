@@ -1,6 +1,6 @@
 import { Rating } from "primereact/rating";
 
-const ProductRating = ({ rating }) => (
+const ProductRating = ({ rating, viewQuantity }) => (
   <div className="row gap-2">
     <Rating
       value={rating.ratingsAverage}
@@ -14,7 +14,11 @@ const ProductRating = ({ rating }) => (
       }}
     />
     <p className="text-[#B6B6B6] text-sm">
-      ({rating.ratingsAverage.toFixed(1)})
+      (
+      {viewQuantity
+        ? `${rating.ratingsQuantity} reviews`
+        : rating.ratingsAverage.toFixed(1)}
+      )
     </p>
   </div>
 );

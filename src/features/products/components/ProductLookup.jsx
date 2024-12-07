@@ -5,16 +5,18 @@ import { useDebounceValue } from "usehooks-ts";
 import { useState } from "react";
 
 import CategoryDropdown from "../../categories/components/CategoryDropdown";
-import ProductResultsPanel from "./ProductResultsPanel";
+import ProductLookupResultsPanel from "./ProductLookupResultsPanel";
 import ProductLookupForm from "./ProductLookupForm";
 
 import { useSearchProductsQuery } from "../productsApiSlice";
+import { useSelector } from "react-redux";
+import { selectProductsUI } from "../productSlice";
 
 const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {
+  const { isInputFocused } = useSelector(selectProductsUI);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
-  const [isInputFocused, setIsInputFocused] = useState(false);
 
   const [debouncedSearchTerm] = useDebounceValue(searchTerm, 500);
 
@@ -35,15 +37,6 @@ const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-  };
-
-  const showSearchResults = () => {
-    setIsInputFocused(true);
-    setShowSearch(true);
-  };
-  const hideSearchResults = () => {
-    setIsInputFocused(false);
-    setShowSearch(false);
   };
 
   return (
@@ -72,18 +65,15 @@ const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {
         <ProductLookupForm
           searchTerm={searchTerm}
           handleChange={handleChange}
-          show={showSearchResults}
-          hide={hideSearchResults}
         />
 
-        <ProductResultsPanel
+        <ProductLookupResultsPanel
           isFetching={isSearchFetching}
           isLoading={isSearchLoading}
           isSuccess={isSearchSuccess}
           isError={isSearchError}
           error={searchError}
           searchResult={searchResult}
-          showSearch={showSearch}
         />
       </div>
     </>

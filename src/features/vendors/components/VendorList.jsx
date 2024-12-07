@@ -1,6 +1,6 @@
 import { classNames } from "primereact/utils";
 
-import { AsyncContentWrapper, OptionItem } from "../../../components";
+import { AsyncContentWrapper, SelectableOption } from "../../../components";
 
 import { useGetVendorsQuery } from "../vendorsApiSlice";
 
@@ -39,7 +39,7 @@ const VendorList = ({ selectedVendors, setSelectedVendors }) => {
         render={() => (
           <div className="space-y-0.5">
             {data.map((vendor) => (
-              <OptionItem
+              <SelectableOption
                 key={vendor.id}
                 id={vendor.id}
                 label={vendor.businessName}

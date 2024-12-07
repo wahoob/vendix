@@ -33,7 +33,15 @@ export const vendorsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    getVendor: builder.query({
+      query: ({ id }) => ({
+        url: `/vendors/${id}`,
+        validateStatus: (response, result) =>
+          response.status === 200 && !result.isError,
+      }),
+      transformResponse: (response) => response.data.vendor,
+    }),
   }),
 });
 
-export const { useGetVendorsQuery } = vendorsApiSlice;
+export const { useGetVendorsQuery, useGetVendorQuery } = vendorsApiSlice;

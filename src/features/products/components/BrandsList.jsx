@@ -1,7 +1,7 @@
 import { classNames } from "primereact/utils";
 
 import { useGetBrandsQuery } from "../productsApiSlice";
-import { AsyncContentWrapper, OptionItem } from "../../../components";
+import { AsyncContentWrapper, SelectableOption } from "../../../components";
 
 const BrandsList = ({ selectedBrands, setSelectedBrands }) => {
   const { isLoading, data, isError, isSuccess, error, isFetching } =
@@ -37,7 +37,7 @@ const BrandsList = ({ selectedBrands, setSelectedBrands }) => {
           render={() => (
             <div>
               {data.map((brand) => (
-                <OptionItem
+                <SelectableOption
                   key={brand}
                   id={brand}
                   label={brand}

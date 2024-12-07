@@ -1,18 +1,33 @@
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  hideSearchResults,
+  selectProductsUI,
+  showSearchResults,
+} from "../productSlice";
 
-const ProductLookupForm = ({ searchTerm, handleChange, show, hide }) => {
+const ProductLookupForm = ({ searchTerm, handleChange }) => {
+  const { isInputFocused } = useSelector(selectProductsUI);
+  const dispatch = useDispatch();
+
   const inputRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
 
-  const handleButtonFocus = () => {
-    show();
-    inputRef.current.focus();
-  };
+  const show = () => dispatch(showSearchResults());
+  const hide = () => dispatch(hideSearchResults());
+
+  useEffect(() => {
+    if (isInputFocused) {
+      inputRef.current.focus();
+    } else {
+      inputRef.current.blur();
+    }
+  }, [isInputFocused]);
 
   return (
     <form className="row justify-between flex-1" onSubmit={handleSubmit}>
@@ -35,7 +50,7 @@ const ProductLookupForm = ({ searchTerm, handleChange, show, hide }) => {
         icon="pi pi-search"
         severity="success"
         className="text-[#8A8A8A] size-5"
-        onClick={handleButtonFocus}
+        onClick={show}
       />
     </form>
   );

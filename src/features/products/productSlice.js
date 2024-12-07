@@ -7,6 +7,10 @@ const initialState = {
     brands: "",
     search: "",
   },
+  ui: {
+    showSearch: false,
+    isInputFocused: false,
+  },
 };
 
 const productSlice = createSlice({
@@ -27,11 +31,26 @@ const productSlice = createSlice({
     resetFilters(state) {
       state.filters = initialState.filters;
     },
+
+    showSearchResults(state) {
+      state.ui.showSearch = true;
+      state.ui.isInputFocused = true;
+    },
+    hideSearchResults(state) {
+      state.ui.showSearch = false;
+      state.ui.isInputFocused = false;
+    },
   },
 });
 
 export default productSlice.reducer;
 
-export const { setFilters, resetFilters } = productSlice.actions;
+export const {
+  setFilters,
+  resetFilters,
+  showSearchResults,
+  hideSearchResults,
+} = productSlice.actions;
 
 export const selectFilters = (state) => state.products.filters;
+export const selectProductsUI = (state) => state.products.ui;

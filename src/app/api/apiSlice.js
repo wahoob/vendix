@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
-import { setCredentials } from "../../features/auth/authSlice";
+import { logout, setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://vendix-api-six.vercel.app/api",
@@ -24,13 +24,10 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
     if (refreshResult?.data) {
       api.dispatch(setCredentials({ ...refreshResult.data }));
-
       result = await baseQuery(args, api, extraOptions);
     } else {
-      return refreshResult;
+      api.dispatch(logout());
     }
-  } else {
-    return result;
   }
 
   return result;

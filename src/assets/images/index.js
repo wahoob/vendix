@@ -4,3 +4,4 @@ export { default as paperFlight } from "./paperflight.png";
 export { default as appStore } from "./app-store.jpeg";
 export { default as googlePlay } from "./google-play.jpeg";
 export { default as person } from "./person.jpg";
+export { default as sentEmail } from "./sent-email.png";

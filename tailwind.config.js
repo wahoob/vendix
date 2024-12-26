@@ -27,6 +27,8 @@ export default {
       backgroundImage: {
         "slider-tabpanel": "url('/images/tabpanel.png')",
         "footer-tabpanel": "url('/images/tabpanel2.png')",
+        "auth-login": "url('/images/auth-login.jpg')",
+        "auth-signup": "url('/images/auth-signup.jpg')",
       },
       keyframes: {
         openPanel: {

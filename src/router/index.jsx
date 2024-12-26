@@ -1,23 +1,51 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Product, Shop } from "../pages";
-import { PageContainer } from "../layouts";
+import { Home, Login, Product, Shop, Signup, VerifyEmail } from "../pages";
+import { AuthWrapper, PageContainer, LoginPersist } from "../layouts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PageContainer />,
+    element: <LoginPersist />,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <PageContainer />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "shop",
+            element: <Shop />,
+          },
+          {
+            path: "shop/:slug",
+            element: <Product />,
+          },
+        ],
       },
       {
-        path: "/shop",
-        element: <Shop />,
-      },
-      {
-        path: "/shop/:slug",
-        element: <Product />,
+        path: "auth",
+        children: [
+          {
+            element: <AuthWrapper />,
+            children: [
+              {
+                path: "login",
+                element: <Login />,
+              },
+              {
+                path: "signup",
+                element: <Signup />,
+              },
+            ],
+          },
+          {
+            path: "verify/:code",
+            element: <VerifyEmail />,
+          },
+        ],
       },
     ],
   },

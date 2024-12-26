@@ -1,5 +1,5 @@
 import { ProgressBar } from "primereact/progressbar";
-import useStarData from "../../hooks/useStarData";
+import { useStarData } from "../../hooks";
 import { Fragment } from "react";
 
 const RatingBarChart = ({ reviews }) => {

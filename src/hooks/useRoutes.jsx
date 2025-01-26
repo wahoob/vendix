@@ -24,6 +24,11 @@ const useRoutes = () => {
         label: pathname.split("/").pop().replace(/-/g, " "),
         active: true,
       },
+      {
+        path: "/cart",
+        label: "Cart",
+        active: pathname === "/cart",
+      },
     ];
   }, [pathname]);
 

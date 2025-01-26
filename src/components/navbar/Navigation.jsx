@@ -12,9 +12,11 @@ import { TagButton, IconicDropdown } from "../";
 import ProductLookup from "../../features/products/components/ProductLookup";
 
 import { toggleSidebar } from "../../features/sidebar/sidebarSlice";
+import { useGetCartQuery } from "../../features/cart/cartApiSlice";
 
 const Navigation = () => {
   const [selectedLocation, setSelectedLocation] = useState(1);
+  const { data } = useGetCartQuery();
 
   const [showFullWidth, setShowFullWidth] = useState(false);
   const dispatch = useDispatch();
@@ -115,7 +117,12 @@ const Navigation = () => {
             </li>
 
             <li>
-              <TagButton Icon={Cart} badge={2} text={"Cart"} to={"/"} />
+              <TagButton
+                Icon={Cart}
+                badge={data?.totalProducts || 0}
+                text={"Cart"}
+                to={"/cart"}
+              />
             </li>
 
             <li className="max-sm:hidden">

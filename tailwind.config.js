@@ -35,9 +35,23 @@ export default {
           "0%": { opacity: "0", transform: "scaleY(0.9)" },
           "100%": { opacity: "1", transform: "scaleY(1)" },
         },
+        shake: {
+          "0%": { transform: "translateX(0.3px) rotate(0deg)" },
+          "10%": { transform: "translateX(-0.3px) rotate(-1deg)" },
+          "20%": { transform: "translateX(-1.3px) rotate(1deg)" },
+          "30%": { transform: "translateX(1.3px) rotate(0deg)" },
+          "40%": { transform: "translateX(0.3px) rotate(1deg)" },
+          "50%": { transform: "translateX(-0.3px) rotate(-1deg)" },
+          "60%": { transform: "translateX(-1.3px) rotate(0deg)" },
+          "70%": { transform: "translateX(1.3px) rotate(-1deg)" },
+          "80%": { transform: "translateX(-0.3px) rotate(1deg)" },
+          "90%": { transform: "translateX(0.3px) rotate(0deg)" },
+          "100%": { transform: "translateX(0.3px) rotate(-1deg)" },
+        },
       },
       animation: {
         openPanel: "openPanel 150ms ease-in-out forwards",
+        shake: "shake 1s ease-in-out infinite",
       },
     },
     screens: {

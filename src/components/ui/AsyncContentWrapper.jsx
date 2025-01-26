@@ -22,6 +22,7 @@ const AsyncContentWrapper = ({
   } else if (isSuccess) {
     content = render();
   } else if (isError) {
+    console.log(error);
     content = (
       <i
         className={classNames(

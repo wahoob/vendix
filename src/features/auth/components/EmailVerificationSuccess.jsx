@@ -36,6 +36,7 @@ const EmailVerificationSuccess = ({ code }) => {
         <Dialog
           visible={show}
           onHide={onHide}
+          draggable={false}
           pt={{
             root: { className: "max-w-2xl" },
             header: { className: "py-2" },

@@ -2,9 +2,30 @@ import { useState } from "react";
 import { NumberInput } from "../../../components";
 import { Button } from "primereact/button";
 import { ArrowCompare, Cart, Heart } from "../../../utils/icons.utils";
+import { useAddItemMutation } from "../../cart/cartApiSlice";
 
-const ProductAction = () => {
+const ProductAction = ({ product, toast }) => {
   const [value, setValue] = useState(1);
+  const [addItem] = useAddItemMutation();
+
+  const addItemAction = async () => {
+    try {
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Item has been added.",
+        life: 3000,
+      });
+      await addItem({ product, quantity: value }).unwrap();
+    } catch {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Unable to add item.",
+        life: 3000,
+      });
+    }
+  };
 
   return (
     <div className="flex gap-2.5 flex-wrap">
@@ -25,6 +46,7 @@ const ProductAction = () => {
             className: "font-quicksand font-bold text-white",
           },
         }}
+        onClick={addItemAction}
       />
       <div className="flex gap-2.5">
         <Button

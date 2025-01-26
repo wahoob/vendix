@@ -5,7 +5,7 @@ import errorPulse from "../../assets/animation/error-animation.json";
 import { Tooltip } from "primereact/tooltip";
 import { useRef } from "react";
 import { getClassNames } from "../../utils/functions.utils";
-import { classNames } from "primereact/utils";
+import { twMerge } from "tailwind-merge";
 
 const SpinnerCheckmark = ({ isLoading, isSuccess, isError, error, pt }) => {
   const errorRef = useRef(null);
@@ -33,7 +33,7 @@ const SpinnerCheckmark = ({ isLoading, isSuccess, isError, error, pt }) => {
         />
       )}
       <div
-        className={classNames("w-14", getClassNames(pt, "root"))}
+        className={twMerge("w-14", getClassNames(pt, "root"))}
         ref={errorRef}
       >
         <Lottie loop={!isSuccess} animationData={animation} />

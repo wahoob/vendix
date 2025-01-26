@@ -21,7 +21,7 @@ const ProductDetails = () => {
                   <ImageGallery {...data} maxWidth={529.42} />
                 </div>
 
-                <ProductInfo {...data} />
+                <ProductInfo product={data} {...data} />
               </div>
 
               <div className="border border-[#ECECEC] lg:px-[3.2rem] px-3 py-10 rounded-2xl">

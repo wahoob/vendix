@@ -1,9 +1,9 @@
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
 
-import ProductRating from "./ProductRating";
-
 import { Cart } from "../../../utils/icons.utils";
+import { Rating } from "../../../components";
+import { useAddItemMutation } from "../../cart/cartApiSlice";
 
 const ProductView = ({
   images,
@@ -18,7 +18,30 @@ const ProductView = ({
   createdAt,
   gridView,
   id,
+  product,
+  toast,
 }) => {
+  const [addItem] = useAddItemMutation();
+
+  const cartAction = async () => {
+    try {
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Item has been added.",
+        life: 3000,
+      });
+      await addItem({ product }).unwrap();
+    } catch {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Unable to add item.",
+        life: 3000,
+      });
+    }
+  };
+
   const CartIcon = (
     <div className="size-3.5">
       <Cart />
@@ -51,7 +74,7 @@ const ProductView = ({
           </h4>
 
           <div className="mb-1">
-            <ProductRating rating={rating} />
+            <Rating rating={rating} />
           </div>
 
           <p className="text-sm text-[#B6B6B6] capitalize">
@@ -83,6 +106,7 @@ const ProductView = ({
               },
               label: { className: "text-sm" },
             }}
+            onClick={cartAction}
           />
         </div>
       </div>

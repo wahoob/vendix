@@ -1,6 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Login, Product, Shop, Signup, VerifyEmail } from "../pages";
-import { AuthWrapper, PageContainer, LoginPersist } from "../layouts";
+import {
+  Cart,
+  Home,
+  Login,
+  Product,
+  Shop,
+  Signup,
+  VerifyEmail,
+} from "../pages";
+import {
+  AuthWrapper,
+  PageContainer,
+  LoginPersist,
+  ProtectedLayout,
+} from "../layouts";
 
 const router = createBrowserRouter([
   {
@@ -23,10 +36,21 @@ const router = createBrowserRouter([
             path: "shop/:slug",
             element: <Product />,
           },
+          {
+            path: "cart",
+            element: <ProtectedLayout allowedRoles={["user"]} />,
+            children: [
+              {
+                path: "/cart",
+                element: <Cart />,
+              },
+            ],
+          },
         ],
       },
       {
         path: "auth",
+        element: <ProtectedLayout preventAccessWhenLoggedIn />,
         children: [
           {
             element: <AuthWrapper />,

@@ -1,6 +1,6 @@
 import { Rating } from "primereact/rating";
 
-const ProductRating = ({ rating, viewQuantity }) => (
+const RatingStars = ({ rating, viewQuantity }) => (
   <div className="row gap-2">
     <Rating
       value={rating.ratingsAverage}
@@ -23,4 +23,4 @@ const ProductRating = ({ rating, viewQuantity }) => (
   </div>
 );
 
-export default ProductRating;
+export default RatingStars;

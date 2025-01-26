@@ -10,10 +10,19 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { email, password },
       }),
 
-      onQueryStarted: async (args, { queryFulfilled, dispatch }) => {
+      onQueryStarted: async (
+        { isLoginAttempt },
+        { queryFulfilled, dispatch }
+      ) => {
         try {
           const response = await queryFulfilled;
-          dispatch(setCredentials(response.data));
+          if (isLoginAttempt) {
+            setTimeout(() => {
+              dispatch(setCredentials(response.data));
+            }, 3000);
+          } else {
+            dispatch(setCredentials(response.data));
+          }
         } catch (err) {
           console.error("Error details:", err.message || err.data || err);
         }

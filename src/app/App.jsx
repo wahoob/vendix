@@ -42,6 +42,28 @@ const App = () => {
                 className: "shrink-0",
               },
             },
+            toast: {
+              message: ({ state, index }) => ({
+                className: classNames(
+                  "my-4 rounded-md w-full bg-opacity-70 border-l-[6px]",
+                  {
+                    "border-[#3B82F6] text-blue-700":
+                      state.messages[index] &&
+                      state.messages[index].message.severity == "info",
+                    "border-[#3BB77E] text-green-700":
+                      state.messages[index] &&
+                      state.messages[index].message.severity == "success",
+                    "border-[#FF5757] text-red-700":
+                      state.messages[index] &&
+                      state.messages[index].message.severity == "error",
+                    "border-[#CC8925]":
+                      state.messages[index] &&
+                      state.messages[index].message.severity == "warn",
+                  }
+                ),
+              }),
+              content: "text-left",
+            },
           },
           ptOptions: {
             mergeSections: true,

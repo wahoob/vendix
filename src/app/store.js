@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice";
 import sidebarReducer from "../features/sidebar/sidebarSlice";
 import productsReducer from "../features/products/productSlice";
+import usersReducer from "../features/users/usersSlice";
 import { apiSlice } from "./api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: authReducer,
     sidebar: sidebarReducer,
     products: productsReducer,
+    users: usersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

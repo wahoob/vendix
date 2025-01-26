@@ -21,3 +21,5 @@ export { default as NumberInput } from "./form/NumberInput";
 export { default as RatingBarChart } from "./ui/RatingBarChart";
 export { default as InputField } from "./form/InputField";
 export { default as SpinnerCheckmark } from "./ui/SpinnerCheckmark";
+export { default as Rating } from "./ui/Rating";
+export { default as ProgressStepper } from "./ui/ProgressStepper";

@@ -4,7 +4,6 @@ import { Toast } from "primereact/toast";
 import { sentEmail } from "../../../assets/images";
 import { useResendVerifyMutation } from "../authApiSlice";
 import { useRef } from "react";
-import { classNames } from "primereact/utils";
 
 const EmailVerificationPrompt = ({ visible, onHide, email }) => {
   const [resendVerify] = useResendVerifyMutation();
@@ -39,6 +38,7 @@ const EmailVerificationPrompt = ({ visible, onHide, email }) => {
     <Dialog
       visible={visible}
       onHide={onHide}
+      draggable={false}
       pt={{
         root: { className: "max-w-2xl" },
         header: { className: "py-2" },
@@ -61,28 +61,7 @@ const EmailVerificationPrompt = ({ visible, onHide, email }) => {
           <strong>Note:</strong> The verification link is active for only 10
           minutes. Please verify your email before the link expires.
         </p>
-        <Toast
-          ref={toast}
-          pt={{
-            message: ({ state, index }) => ({
-              className: classNames(
-                "my-4 rounded-md w-full bg-opacity-70 border-l-[6px]",
-                {
-                  "border-[#3B82F6] text-blue-700":
-                    state.messages[index] &&
-                    state.messages[index].message.severity == "info",
-                  "border-[#3BB77E] text-green-700":
-                    state.messages[index] &&
-                    state.messages[index].message.severity == "success",
-                  "border-[#FF5757] text-red-700":
-                    state.messages[index] &&
-                    state.messages[index].message.severity == "error",
-                }
-              ),
-            }),
-            content: "text-left",
-          }}
-        />
+        <Toast ref={toast} />
         <Button
           label="Resend Verification Email"
           severity="success"

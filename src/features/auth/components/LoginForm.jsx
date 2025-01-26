@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await login(data).unwrap();
+      await login({ ...data, isLoginAttempt: true }).unwrap();
     } catch (err) {
       if (err.status === 403) {
         showPrompt(data.email);

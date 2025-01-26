@@ -6,7 +6,7 @@ const useAuth = () => {
   const token = useSelector(selectCurrentToken);
   const isLoggedIn = Boolean(token);
   let isAdmin = false;
-  let isUser = true;
+  let isUser = false;
   let isVendor = false;
   let isDelivery = false;
   let username = "guest";

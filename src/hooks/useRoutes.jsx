@@ -29,6 +29,11 @@ const useRoutes = () => {
         label: "Cart",
         active: pathname === "/cart",
       },
+      {
+        path: "/wishlist",
+        label: "Wishlist",
+        active: pathname === "/wishlist",
+      },
     ];
   }, [pathname]);
 

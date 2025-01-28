@@ -7,6 +7,7 @@ import {
   Shop,
   Signup,
   VerifyEmail,
+  Wishlist,
 } from "../pages";
 import {
   AuthWrapper,
@@ -37,12 +38,16 @@ const router = createBrowserRouter([
             element: <Product />,
           },
           {
-            path: "cart",
-            element: <ProtectedLayout allowedRoles={["user"]} />,
+            path: "/",
+            element: <ProtectedLayout allowedRoles={["user", "vendor"]} />,
             children: [
               {
-                path: "/cart",
+                path: "cart",
                 element: <Cart />,
+              },
+              {
+                path: "wishlist",
+                element: <Wishlist />,
               },
             ],
           },

@@ -13,15 +13,15 @@ const CartTable = ({ toast }) => {
       <div className="font-bold text-[#243B4D]">
         <div
           className={classNames(
-            "grid grid-cols-[1fr,repeat(2,80px)] md:grid-cols-[1fr,repeat(4,80px)] xl:gap-4",
-            "text-center bg-[#ECECEC] p-4 rounded-t-xl"
+            "grid grid-cols-[1fr,repeat(2,60px)] md:grid-cols-[1fr,repeat(4,80px)] gap-2 xl:gap-4",
+            "text-center bg-[#ECECEC] p-4 rounded-t-xl max-md:text-sm"
           )}
         >
           <span className="text-left">Product</span>
-          <span>Unit Pirce</span>
+          <span className="max-md:hidden">Unit Pirce</span>
           <span>Quantity</span>
           <span className="max-md:hidden">Subtotal</span>
-          <span className="max-md:hidden">Remove</span>
+          <span>Remove</span>
         </div>
 
         <div

@@ -3,12 +3,14 @@ import { NumberInput } from "../../../components";
 import { Button } from "primereact/button";
 import { ArrowCompare, Cart, Heart } from "../../../utils/icons.utils";
 import { useAddItemMutation } from "../../cart/cartApiSlice";
+import { useAddWishlistItemMutation } from "../../wishlist/wishlistsApiSlice";
 
 const ProductAction = ({ product, toast }) => {
   const [value, setValue] = useState(1);
-  const [addItem] = useAddItemMutation();
+  const [addCartItem] = useAddItemMutation();
+  const [addWishlistItem] = useAddWishlistItemMutation();
 
-  const addItemAction = async () => {
+  const addCartItemAction = async () => {
     try {
       toast.current.show({
         severity: "success",
@@ -16,7 +18,26 @@ const ProductAction = ({ product, toast }) => {
         detail: "Item has been added.",
         life: 3000,
       });
-      await addItem({ product, quantity: value }).unwrap();
+      await addCartItem({ product, quantity: value }).unwrap();
+    } catch {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Unable to add item.",
+        life: 3000,
+      });
+    }
+  };
+
+  const addWishlistItemAction = async () => {
+    try {
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Item has been added.",
+        life: 3000,
+      });
+      await addWishlistItem({ product }).unwrap();
     } catch {
       toast.current.show({
         severity: "error",
@@ -46,7 +67,7 @@ const ProductAction = ({ product, toast }) => {
             className: "font-quicksand font-bold text-white",
           },
         }}
-        onClick={addItemAction}
+        onClick={addCartItemAction}
       />
       <div className="flex gap-2.5">
         <Button
@@ -61,6 +82,7 @@ const ProductAction = ({ product, toast }) => {
               className: "border border-[#F1F1F1] p-2.5",
             },
           }}
+          onClick={addWishlistItemAction}
         />
         <Button
           icon={

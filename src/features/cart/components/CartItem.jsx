@@ -75,7 +75,7 @@ const CartItem = ({
   return (
     <div
       className={classNames(
-        "grid grid-cols-[1fr,repeat(2,80px)] md:grid-cols-[1fr,repeat(4,80px)] xl:gap-4 items-center",
+        "grid grid-cols-[1fr,repeat(2,60px)] md:grid-cols-[1fr,repeat(4,80px)] gap-2 xl:gap-4 items-center",
         "text-center px-4 py-6",
         "border-b-2 border-[#F4F5F7]"
       )}
@@ -105,7 +105,9 @@ const CartItem = ({
         </div>
       </div>
 
-      <p className="text-lg xl:text-2xl text-[#7E7E7E]">${price}</p>
+      <p className="text-lg xl:text-2xl text-[#7E7E7E] max-md:hidden">
+        ${price}
+      </p>
 
       <NumberInput
         onChange={updateItemAction}
@@ -113,6 +115,11 @@ const CartItem = ({
         loading={isLoading}
         minValue={0}
         maxValue={stockQuantity}
+        pt={{
+          root: "max-md:py-1 max-md:w-fit",
+          input: "max-md:w-8",
+          arrowsContainer: "max-md:gap-1.5",
+        }}
       />
 
       <p className="text-lg xl:text-2xl text-[#3BB77E] max-md:hidden">
@@ -120,7 +127,6 @@ const CartItem = ({
       </p>
 
       <Button
-        className="max-md:hidden"
         icon="pi pi-trash"
         pt={{
           root: "w-fit mx-auto",

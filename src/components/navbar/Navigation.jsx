@@ -13,10 +13,12 @@ import ProductLookup from "../../features/products/components/ProductLookup";
 
 import { toggleSidebar } from "../../features/sidebar/sidebarSlice";
 import { useGetCartQuery } from "../../features/cart/cartApiSlice";
+import { useGetWishlistQuery } from "../../features/wishlist/wishlistsApiSlice";
 
 const Navigation = () => {
   const [selectedLocation, setSelectedLocation] = useState(1);
-  const { data } = useGetCartQuery();
+  const { data: cart } = useGetCartQuery();
+  const { data: wishlist } = useGetWishlistQuery();
 
   const [showFullWidth, setShowFullWidth] = useState(false);
   const dispatch = useDispatch();
@@ -113,13 +115,18 @@ const Navigation = () => {
             </li>
 
             <li className="max-sm:hidden">
-              <TagButton Icon={Heart} badge={6} text={"Wishlist"} to={"/"} />
+              <TagButton
+                Icon={Heart}
+                badge={wishlist?.products.length || 0}
+                text={"Wishlist"}
+                to={"/wishlist"}
+              />
             </li>
 
             <li>
               <TagButton
                 Icon={Cart}
-                badge={data?.totalProducts || 0}
+                badge={cart?.totalProducts || 0}
                 text={"Cart"}
                 to={"/cart"}
               />

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { classNames } from "primereact/utils";
+import { twMerge } from "tailwind-merge";
+import { getClassNames } from "../../utils/functions.utils";
 
 const NumberInput = ({
   onChange,
@@ -7,6 +8,7 @@ const NumberInput = ({
   maxValue = 99,
   initialValue = 1,
   loading,
+  pt,
 }) => {
   const [value, setValue] = useState(initialValue);
 
@@ -29,9 +31,10 @@ const NumberInput = ({
 
   return (
     <div
-      className={classNames(
+      className={twMerge(
         "border-2 border-[#3BB77E] rounded-[5px] overflow-hidden",
-        "row gap-2 pl-1 pr-4 py-1.5"
+        "row gap-2 pl-1 pr-4 py-1.5",
+        getClassNames(pt, "root")
       )}
     >
       {loading ? (
@@ -40,15 +43,19 @@ const NumberInput = ({
         <>
           <input
             type="number"
-            className="outline-none text-center w-12"
+            className={twMerge(
+              "outline-none text-center w-12",
+              getClassNames(pt, "input")
+            )}
             value={value}
             onChange={handleInputChange}
           />
 
           <div
-            className={classNames(
+            className={twMerge(
               "row flex-col gap-3",
-              "[&_*]:text-[#3BB77E] [&_*]:text-[9px] [&_*]:cursor-pointer"
+              "[&_*]:text-[#3BB77E] [&_*]:text-[9px] [&_*]:cursor-pointer",
+              getClassNames(pt, "arrowsContainer")
             )}
           >
             <i className="pi pi-chevron-up" onClick={handleIncrement} />

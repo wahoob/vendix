@@ -14,11 +14,13 @@ import ProductLookup from "../../features/products/components/ProductLookup";
 import { toggleSidebar } from "../../features/sidebar/sidebarSlice";
 import { useGetCartQuery } from "../../features/cart/cartApiSlice";
 import { useGetWishlistQuery } from "../../features/wishlist/wishlistsApiSlice";
+import useAuth from "../../features/auth/hooks/useAuth";
 
 const Navigation = () => {
   const [selectedLocation, setSelectedLocation] = useState(1);
   const { data: cart } = useGetCartQuery();
   const { data: wishlist } = useGetWishlistQuery();
+  const { isLoggedIn, username } = useAuth();
 
   const [showFullWidth, setShowFullWidth] = useState(false);
   const dispatch = useDispatch();
@@ -133,7 +135,11 @@ const Navigation = () => {
             </li>
 
             <li className="max-sm:hidden">
-              <TagButton Icon={Person} text={"Account"} to={"/"} />
+              <TagButton
+                Icon={Person}
+                text={username}
+                to={isLoggedIn ? "/dashboard" : "/auth/login"}
+              />
             </li>
           </ul>
         </div>

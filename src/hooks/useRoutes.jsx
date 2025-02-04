@@ -34,6 +34,11 @@ const useRoutes = () => {
         label: "Wishlist",
         active: pathname === "/wishlist",
       },
+      {
+        path: "/dashboard",
+        label: "Dashboard",
+        active: pathname === "/dashboard",
+      },
     ];
   }, [pathname]);
 

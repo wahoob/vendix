@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   Cart,
+  Dashboard,
   Home,
   Login,
   Product,
@@ -14,6 +15,7 @@ import {
   PageContainer,
   LoginPersist,
   ProtectedLayout,
+  DashboardContainer,
 } from "../layouts";
 
 const router = createBrowserRouter([
@@ -73,6 +75,22 @@ const router = createBrowserRouter([
           {
             path: "verify/:code",
             element: <VerifyEmail />,
+          },
+        ],
+      },
+      {
+        path: "/",
+        // element: <ProtectedLayout />,
+        children: [
+          {
+            path: "/",
+            element: <DashboardContainer />,
+            children: [
+              {
+                path: "dashboard",
+                element: <Dashboard />,
+              },
+            ],
           },
         ],
       },

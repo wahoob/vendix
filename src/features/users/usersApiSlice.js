@@ -4,6 +4,27 @@ import { selectAddress, setAddress } from "./usersSlice";
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    getAllUsers: builder.query({
+      query: ({ sort, limit }) => {
+        const params = new URLSearchParams();
+
+        if (sort) params.append("sort", sort);
+        if (limit) params.append("limit", limit);
+
+        return {
+          url: `/users?${params.toString()}`,
+          validateStatus: (response, result) =>
+            response.status === 200 && !result.isError,
+        };
+      },
+      transformResponse: (response) => [
+        ...response.data.users.map((user) => {
+          user.id = user._id;
+          return user;
+        }),
+      ],
+    }),
+
     getMe: builder.query({
       query: "/users/me",
       transformResponse: (response) => response.data.user,
@@ -123,6 +144,7 @@ export const {
   useAddAddressMutation,
   useUpdateAddressMutation,
   useRemoveAddressMutation,
+  useGetAllUsersQuery,
 } = usersApiSlice;
 
 export const selectUserResult = usersApiSlice.endpoints.getMe.select();

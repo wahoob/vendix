@@ -34,6 +34,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           validateStatus: (response, result) =>
             response.status === 200 && !result.isError,
         };
+        // TODO: edit the response
       },
       providesTags: (result) => {
         if (result?.length) {
@@ -110,6 +111,15 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       transformResponse: (response) => response.data.product,
     }),
+
+    getProductsOverview: builder.query({
+      query: () => ({
+        url: "/products/overview",
+        validateStatus: (response, result) =>
+          response.status === 200 && !result.isError,
+      }),
+      transformResponse: (response) => response.data,
+    }),
   }),
 });
 
@@ -121,4 +131,5 @@ export const {
   useGetPriceRageQuery,
   useGetDealsQuery,
   useGetProductBySlugQuery,
+  useGetProductsOverviewQuery,
 } = productsApiSlice;

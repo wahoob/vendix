@@ -32,7 +32,7 @@ const TagButton = ({ Icon, badge, text, className, to }) => {
         />
       </div>
 
-      <p className="max-lg:hidden text-[#7E7E7E] hover:text-neutral-800">
+      <p className="max-lg:hidden text-[#7E7E7E] hover:text-neutral-800 capitalize">
         {text}
       </p>
     </button>

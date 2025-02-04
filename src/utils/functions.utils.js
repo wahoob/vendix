@@ -14,3 +14,7 @@ export const getClassNames = (partClassNames = {}, part) => {
 export const getTimeToNow = (date) => {
   return dayjs().to(dayjs(date));
 };
+
+export const formatShortDate = (date) => {
+  return dayjs(date).format("D MMM, YYYY");
+};

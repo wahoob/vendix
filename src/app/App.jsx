@@ -64,6 +64,34 @@ const App = () => {
               }),
               content: "text-left",
             },
+            datatable: {
+              headerRow: "whitespace-nowrap",
+              bodyRow: ({ context }) => ({
+                className: classNames("whitespace-nowrap", {
+                  "text-[#495058] bg-transparent": context.selected,
+                }),
+              }),
+              column: {
+                headerCell: "text-[#495058] font-medium",
+                headerCheckbox: ({ context }) => ({
+                  box: classNames("border bg-[#F8F9FA] size-4 rounded", {
+                    "border-[#CACBCB] ": !context.checked,
+                    "border-[#3BB77E] bg-[#3BB77E]": context.checked,
+                  }),
+                  root: "size-4",
+                  icon: "size-3",
+                }),
+                rowCheckbox: ({ context }) => ({
+                  box: classNames("border bg-[#F8F9FA] size-4 rounded", {
+                    "border-[#CACBCB] ": !context.checked,
+                    "border-[#3BB77E] bg-[#3BB77E]": context.checked,
+                  }),
+                  root: "size-4",
+                  icon: "size-3",
+                }),
+                bodyCell: "leading-none",
+              },
+            },
           },
           ptOptions: {
             mergeSections: true,

@@ -1,16 +1,18 @@
 import { classNames } from "primereact/utils";
-import {
-  useRemoveAddressMutation,
-  useUpdateAddressMutation,
-} from "../usersApiSlice";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button } from "primereact/button";
-import EditAddressForm from "./EditAddressForm";
-import { selectAddress, setAddress } from "../usersSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import EditAddressForm from "./EditAddressForm";
+
+import {
+  useRemoveAddressMutation,
+  useUpdateAddressMutation,
+} from "../usersApiSlice";
+import { selectAddress, setAddress } from "../usersSlice";
 
 const AddressItem = ({ country, state, city, street, _id }) => {
   const [openForm, setOpenForm] = useState(false);

@@ -70,11 +70,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    getMe: builder.query({
-      query: () => "/users/me",
-      transformResponse: (response) => response.data.user,
-    }),
-
     resendVerify: builder.mutation({
       query: ({ email }) => ({
         url: "/users/resendVerify",
@@ -106,7 +101,6 @@ export const {
   useSendLogoutMutation,
   useRefetchMutation,
   useSignupMutation,
-  useLazyGetMeQuery,
   useResendVerifyMutation,
   useVerifyEmailMutation,
 } = authApiSlice;

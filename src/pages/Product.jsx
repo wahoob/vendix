@@ -1,5 +1,5 @@
 import { BreadCrumbNav, Sidebar } from "../components";
-import ProductDetails from "../features/products/components/ProductDetails";
+import { ProductDetails } from "../features/products";
 
 const Product = () => {
   return (

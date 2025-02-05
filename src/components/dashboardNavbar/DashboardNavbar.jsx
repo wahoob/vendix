@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { logo, person } from "../../assets/images";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import { Menu } from "primereact/menu";
 import { useRef } from "react";
+
+import { logo, person } from "../../assets/images";
 
 const DashboardNavbar = ({ toggle }) => {
   const menuRef = useRef(null);

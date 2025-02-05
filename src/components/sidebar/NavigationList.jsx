@@ -2,6 +2,7 @@ import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
 
 import { Compare, Cart, Person, Heart } from "../../utils/icons.utils";
+
 import { TitleLabel } from "../";
 
 const NavigationList = () => {

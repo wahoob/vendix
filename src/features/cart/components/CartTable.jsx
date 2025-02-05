@@ -1,8 +1,10 @@
 import { classNames } from "primereact/utils";
-import { AsyncContentWrapper } from "../../../components";
-import { useGetCartQuery } from "../cartApiSlice";
-import CartItem from "./CartItem";
 import { Button } from "primereact/button";
+
+import CartItem from "./CartItem";
+import { AsyncContentWrapper } from "../../../components";
+
+import { useGetCartQuery } from "../cartApiSlice";
 
 const CartTable = ({ toast }) => {
   const { data, isError, isFetching, isLoading, isSuccess, error } =

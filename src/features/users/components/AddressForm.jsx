@@ -1,11 +1,13 @@
 import { Dialog } from "primereact/dialog";
-import { InputField } from "../../../components";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAddAddressMutation } from "../usersApiSlice";
 import { useEffect } from "react";
+import * as yup from "yup";
+
+import { InputField } from "../../../components";
+
+import { useAddAddressMutation } from "../usersApiSlice";
 
 const AddressForm = ({ visible, onHide }) => {
   const [

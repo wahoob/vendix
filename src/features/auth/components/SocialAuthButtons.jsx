@@ -1,6 +1,7 @@
 import { classNames } from "primereact/utils";
-import { Google } from "../../../utils/icons.utils";
 import { Button } from "primereact/button";
+
+import { Google } from "../../../utils/icons.utils";
 
 const SocialAuthButtons = () => {
   return (

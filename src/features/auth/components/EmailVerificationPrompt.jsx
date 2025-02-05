@@ -1,9 +1,11 @@
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
-import { sentEmail } from "../../../assets/images";
-import { useResendVerifyMutation } from "../authApiSlice";
 import { useRef } from "react";
+
+import { sentEmail } from "../../../assets/images";
+
+import { useResendVerifyMutation } from "../authApiSlice";
 
 const EmailVerificationPrompt = ({ visible, onHide, email }) => {
   const [resendVerify] = useResendVerifyMutation();

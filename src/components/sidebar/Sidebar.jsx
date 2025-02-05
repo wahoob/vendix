@@ -5,12 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import FilterList from "./FilterList";
 import NavigationList from "./NavigationList";
 import { Overlay } from "../../components";
+import { CategorySidebarList } from "../../features/categories";
 
-import CategorySidebarList from "../../features/categories/components/CategorySidebarList";
-import {
-  selectSidebar,
-  toggleSidebar,
-} from "../../features/sidebar/sidebarSlice";
+import { selectSidebar, toggleSidebar } from "../../features/sidebar";
 
 const Sidebar = () => {
   const { isOpen } = useSelector(selectSidebar);

@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { DashboardNavbar, DashboardSidebar } from "../components";
 import { useState } from "react";
 import { classNames } from "primereact/utils";
+
+import { DashboardNavbar, DashboardSidebar } from "../components";
 
 const DashboardContainer = () => {
   const [isOpen, setIsOpen] = useState(true);

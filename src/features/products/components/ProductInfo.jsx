@@ -1,9 +1,11 @@
 import { classNames } from "primereact/utils";
-import useDiscount from "../hooks/useDiscount";
-import ProductAction from "./ProductAction";
-import { Rating } from "../../../components";
 import { useRef } from "react";
 import { Toast } from "primereact/toast";
+
+import ProductAction from "./ProductAction";
+import { Rating } from "../../../components";
+
+import useDiscount from "../hooks/useDiscount";
 
 const ProductInfo = ({
   discount,

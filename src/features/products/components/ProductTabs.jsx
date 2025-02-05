@@ -1,7 +1,8 @@
 import { TabView, TabPanel } from "primereact/tabview";
 import { classNames } from "primereact/utils";
-import ProductReviews from "../../reviews/components/ProductReviews";
-import VendorOverview from "../../vendors/components/VendorOverview";
+
+import { ProductReviews } from "../../reviews";
+import { VendorOverview } from "../../vendors";
 
 const ProductTabs = ({ salesCount, reviews, rating, id, vendor }) => {
   const tabHeaderTemplate = (options) => {

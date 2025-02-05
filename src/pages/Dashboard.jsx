@@ -1,11 +1,14 @@
 import { classNames } from "primereact/utils";
-import LatestOrders from "../features/orders/components/LatestOrders";
-import NewMembers from "../features/users/components/NewMembers";
-import StatsPanel from "../features/products/components/StatsPanel";
-import SaleStatisticsChart from "../features/products/components/SaleStatisticsChart";
-import RevenueStatusChart from "../features/products/components/RevenueStatusChart";
-import TopSellingCategories from "../features/products/components/TopSellingCategories";
-import RecentReviews from "../features/reviews/components/RecentReviews";
+
+import { LatestOrders } from "../features/orders";
+import { NewMembers } from "../features/users";
+import {
+  TopSellingCategories,
+  RevenueStatusChart,
+  SaleStatisticsChart,
+  StatsPanel,
+} from "../features/products";
+import { RecentReviews } from "../features/reviews";
 
 const Dashboard = () => {
   return (

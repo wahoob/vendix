@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Rating } from "primereact/rating";
+import { classNames } from "primereact/utils";
+
 import ReviewCard from "./ReviewCard";
 import { AsyncContentWrapper } from "../../../components";
 import { RatingBarChart, VerticalDivider } from "../../../components";
-import { Rating } from "primereact/rating";
+
 import useProductReviews from "../hooks/useProductReviews";
-import { classNames } from "primereact/utils";
 
 const ProductReviews = ({ id, rating, reviews, salesCount }) => {
   const [showReviews, setShowReviews] = useState(false);

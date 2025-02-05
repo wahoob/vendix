@@ -1,6 +1,5 @@
 import { classNames } from "primereact/utils";
-import { useImperativeHandle } from "react";
-import { forwardRef, useState } from "react";
+import { useImperativeHandle, forwardRef, useState } from "react";
 
 const ProgressStepper = ({ steps, initial = 0 }, ref) => {
   const [current, setCurrent] = useState(initial);

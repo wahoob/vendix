@@ -1,10 +1,12 @@
-import { useVerifyEmailMutation } from "../authApiSlice";
 import { useMountEffect } from "primereact/hooks";
-import { SpinnerCheckmark } from "../../../components";
 import { useEffect, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
+
+import { SpinnerCheckmark } from "../../../components";
+
+import { useVerifyEmailMutation } from "../authApiSlice";
 
 const EmailVerificationSuccess = ({ code }) => {
   const [show, setShow] = useState(false);

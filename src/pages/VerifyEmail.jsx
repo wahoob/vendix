@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import EmailVerificationSuccess from "../features/auth/components/EmailVerificationSuccess";
+
+import { EmailVerificationSuccess } from "../features/auth";
 
 const VerifyEmail = () => {
   const { code } = useParams();

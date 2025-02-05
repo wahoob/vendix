@@ -1,11 +1,13 @@
 import Lottie from "lottie-react";
+import { Tooltip } from "primereact/tooltip";
+import { useRef } from "react";
+import { twMerge } from "tailwind-merge";
+
 import loadingSpinner from "../../assets/animation/spinner-animation.json";
 import successCheckmark from "../../assets/animation/success-animation.json";
 import errorPulse from "../../assets/animation/error-animation.json";
-import { Tooltip } from "primereact/tooltip";
-import { useRef } from "react";
+
 import { getClassNames } from "../../utils/functions.utils";
-import { twMerge } from "tailwind-merge";
 
 const SpinnerCheckmark = ({ isLoading, isSuccess, isError, error, pt }) => {
   const errorRef = useRef(null);

@@ -1,6 +1,8 @@
 import { Timeline } from "primereact/timeline";
-import { useGetAllReviewsQuery } from "../reviewsApiSlice";
+
 import { AsyncContentWrapper } from "../../../components";
+
+import { useGetAllReviewsQuery } from "../reviewsApiSlice";
 import useRecentReviews from "../hooks/useRecentReviews";
 
 const RecentReviews = () => {

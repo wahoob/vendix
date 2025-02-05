@@ -1,5 +1,6 @@
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
+
 import { useCarousel } from "../../hooks";
 
 const buttonStyles = (side) => ({

@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
-import { Banner, BreadCrumbNav } from "../components";
-import CartHeader from "../features/cart/components/CartHeader";
-import CartTable from "../features/cart/components/CartTable";
-import Checkout from "../features/cart/components/Checkout";
 import { Toast } from "primereact/toast";
-import UserAddressesList from "../features/users/components/UserAddressesList";
-import AddressForm from "../features/users/components/AddressForm";
-import BillingDetails from "../features/cart/components/BillingDetails";
+
+import { Banner, BreadCrumbNav } from "../components";
+
+import { AddressForm, UserAddressesList } from "../features/users";
+import {
+  CartHeader,
+  CartTable,
+  Checkout,
+  BillingDetails,
+} from "../features/cart";
 
 const Cart = () => {
   const toast = useRef(null);

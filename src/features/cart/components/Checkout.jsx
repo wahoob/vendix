@@ -1,8 +1,9 @@
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
-import { useGetCartQuery } from "../cartApiSlice";
 import { useSelector } from "react-redux";
-import { selectCurrentAddress } from "../../users/usersApiSlice";
+
+import { selectCurrentAddress } from "../../users";
+import { useGetCartQuery } from "../cartApiSlice";
 
 const Checkout = ({ showAddresses, showForm, showBilling, toast }) => {
   const { data: cart } = useGetCartQuery();

@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import useVerifyToken from "../features/auth/hooks/useVerifyToken";
+
+import { useVerifyToken } from "../features/auth";
 
 const LoginPersist = () => {
   const { isLoading } = useVerifyToken();

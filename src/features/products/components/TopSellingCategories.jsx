@@ -1,5 +1,7 @@
 import { ProgressBar } from "primereact/progressbar";
+
 import { AsyncContentWrapper } from "../../../components";
+
 import { useGetProductsOverviewQuery } from "../productsApiSlice";
 
 const TopSellingCategories = () => {

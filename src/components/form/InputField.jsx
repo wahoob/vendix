@@ -1,7 +1,8 @@
 import { classNames } from "primereact/utils";
 import { useState } from "react";
-import { getClassNames } from "../../utils/functions.utils";
 import { twMerge } from "tailwind-merge";
+
+import { getClassNames } from "../../utils/functions.utils";
 
 const InputField = ({
   icon,

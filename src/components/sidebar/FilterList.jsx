@@ -1,16 +1,16 @@
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Filter } from "../../utils/icons.utils";
 
-import VendorList from "../../features/vendors/components/VendorList";
-import BrandsList from "../../features/products/components/BrandsList";
-import PriceSlider from "../../features/products/components/PriceSlider";
+import { VendorList } from "../../features/vendors";
+import { BrandsList, PriceSlider } from "../../features/products";
 import { TitleLabel } from "../";
-import { useDispatch } from "react-redux";
-import { setFilters } from "../../features/products/productSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+
+import { setFilters } from "../../features/products";
 
 const FilterList = () => {
   const dispatch = useDispatch();

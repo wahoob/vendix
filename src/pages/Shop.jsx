@@ -1,6 +1,5 @@
 import { BreadCrumbNav, Sidebar } from "../components";
-import ProductsList from "../features/products/components/ProductsList";
-import ProductFilterSearch from "../features/products/components/ProductFilterSearch";
+import { ProductsList, ProductFilterSearch } from "../features/products";
 
 const Shop = () => {
   return (

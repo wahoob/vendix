@@ -1,7 +1,9 @@
 import { Dialog } from "primereact/dialog";
-import { useGetMeQuery } from "../usersApiSlice";
+
 import { AsyncContentWrapper } from "../../../components";
 import AddressItem from "./AddressItem";
+
+import { useGetMeQuery } from "../usersApiSlice";
 
 const UserAddressesList = ({ visible, onHide }) => {
   const { data, ...rest } = useGetMeQuery();

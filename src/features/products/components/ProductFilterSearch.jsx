@@ -1,8 +1,9 @@
 import { classNames } from "primereact/utils";
 import { useDispatch } from "react-redux";
-import { setFilters } from "../productSlice";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
+
+import { setFilters } from "../productSlice";
 
 const ProductFilterSearch = () => {
   const [value, setValue] = useState("");

@@ -1,9 +1,12 @@
 import { Button } from "primereact/button";
 import { Rating } from "primereact/rating";
 import { classNames } from "primereact/utils";
+
 import person from "../../../assets/images/person.jpg";
-import { useGetVendorQuery } from "../vendorsApiSlice";
+
 import { AsyncContentWrapper } from "../../../components";
+
+import { useGetVendorQuery } from "../vendorsApiSlice";
 
 const VendorOverview = ({ _id: id }) => {
   const { isLoading, isError, isFetching, isSuccess, error, data } =

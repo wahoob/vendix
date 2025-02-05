@@ -1,5 +1,7 @@
 import { classNames } from "primereact/utils";
+
 import { AsyncContentWrapper, InfoBox } from "../../../components";
+
 import { useGetProductsOverviewQuery } from "../productsApiSlice";
 
 const StatsPanel = () => {

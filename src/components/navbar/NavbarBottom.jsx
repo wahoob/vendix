@@ -1,10 +1,11 @@
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
-import { Browse, Deals, Headphone } from "../../utils/icons.utils";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { toggleSidebar } from "../../features/sidebar/sidebarSlice";
-import { useNavigate } from "react-router-dom";
+import { Browse, Deals, Headphone } from "../../utils/icons.utils";
+
+import { toggleSidebar } from "../../features/sidebar";
 
 const NavbarBottom = () => {
   const dispatch = useDispatch();

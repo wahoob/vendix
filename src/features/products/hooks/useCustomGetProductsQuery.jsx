@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
+
 import { useGetProductsQuery } from "../productsApiSlice";
 
 const useCustomGetProductsQuery = (args) => {

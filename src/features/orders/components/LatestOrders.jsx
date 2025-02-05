@@ -1,10 +1,12 @@
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { useState } from "react";
-import { useGetOrdersQuery } from "../ordersApiSlice";
-import { AsyncContentWrapper } from "../../../components";
-import { formatShortDate } from "../../../utils/functions.utils";
 import { Button } from "primereact/button";
+
+import { AsyncContentWrapper } from "../../../components";
+
+import { useGetOrdersQuery } from "../ordersApiSlice";
+import { formatShortDate } from "../../../utils/functions.utils";
 
 const LatestOrders = () => {
   const [selectedProducts, setSelectedProducts] = useState(null);

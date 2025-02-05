@@ -1,4 +1,5 @@
 import { classNames } from "primereact/utils";
+
 import { getClassNames } from "../../utils/functions.utils";
 
 const InfoBox = ({ label, value, description, pt }) => {

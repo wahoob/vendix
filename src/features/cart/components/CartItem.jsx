@@ -1,7 +1,8 @@
 import { Button } from "primereact/button";
-import { NumberInput, Rating } from "../../../components";
 import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
+
+import { NumberInput, Rating } from "../../../components";
 
 import {
   useRemoveItemMutation,

@@ -1,8 +1,10 @@
 import { classNames } from "primereact/utils";
-import { useGetWishlistQuery } from "../wishlistsApiSlice";
+import { Button } from "primereact/button";
+
 import { AsyncContentWrapper } from "../../../components";
 import WishlistItem from "./WishlistItem";
-import { Button } from "primereact/button";
+
+import { useGetWishlistQuery } from "../wishlistsApiSlice";
 
 const WishlistList = ({ toast }) => {
   const { data, isLoading, isSuccess, isError, error, isFetching } =

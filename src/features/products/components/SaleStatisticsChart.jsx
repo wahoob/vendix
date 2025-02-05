@@ -9,7 +9,9 @@ import {
   Filler,
   Legend,
 } from "chart.js";
+
 import { AsyncContentWrapper } from "../../../components";
+
 import { useGetProductsOverviewQuery } from "../productsApiSlice";
 import prepareLineChartData from "../utils/prepareLineChartData";
 

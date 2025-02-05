@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Checkbox, InputField, SpinnerCheckmark } from "../../../components";
 import { Button } from "primereact/button";
-import { useSendLoginMutation } from "../authApiSlice.js";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
-import { usePersist } from "../../../hooks";
 import { Divider } from "primereact/divider";
+
 import SocialAuthButtons from "./SocialAuthButtons.jsx";
+import { Checkbox, InputField, SpinnerCheckmark } from "../../../components";
+
+import { usePersist } from "../../../hooks";
+import { useSendLoginMutation } from "../authApiSlice.js";
 
 const LoginForm = () => {
   const [persist, setPersist] = usePersist();

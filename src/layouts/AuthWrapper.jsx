@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { classNames } from "primereact/utils";
-import EmailVerificationPrompt from "../features/auth/components/EmailVerificationPrompt";
 import { useState } from "react";
+
+import { EmailVerificationPrompt } from "../features/auth";
 
 const AuthWrapper = () => {
   const { pathname } = useLocation();

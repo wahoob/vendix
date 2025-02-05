@@ -1,9 +1,10 @@
-import { useGetPopularProductsQuery } from "../productsApiSlice";
+import { useRef } from "react";
+import { Toast } from "primereact/toast";
 
 import { AsyncContentWrapper } from "../../../components";
 import ProductView from "./ProductView";
-import { useRef } from "react";
-import { Toast } from "primereact/toast";
+
+import { useGetPopularProductsQuery } from "../productsApiSlice";
 
 const PopularProducts = ({ selectedCategory }) => {
   const { isError, error, isLoading, isSuccess, data, isFetching } =

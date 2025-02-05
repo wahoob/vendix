@@ -1,7 +1,6 @@
 import { classNames } from "primereact/utils";
 
-import { AsyncContentWrapper } from "../../../components";
-import { TitleLabel } from "../../../components";
+import { AsyncContentWrapper, TitleLabel } from "../../../components";
 import CategorySidebarItem from "./CategorySidebarItem";
 
 import { useGetCategoriesQuery } from "../categoriesApiSlice";

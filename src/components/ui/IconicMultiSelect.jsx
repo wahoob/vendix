@@ -1,6 +1,8 @@
 import { classNames } from "primereact/utils";
-import { getClassNames } from "../../utils/functions.utils";
 import { useEffect, useRef, useState } from "react";
+
+import { getClassNames } from "../../utils/functions.utils";
+
 import { Checkbox } from "../";
 
 const IconicMultiSelect = ({

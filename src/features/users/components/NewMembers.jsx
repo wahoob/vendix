@@ -1,6 +1,7 @@
 import { AsyncContentWrapper } from "../../../components";
-import { useGetAllUsersQuery } from "../usersApiSlice";
 import UserCard from "./UserCard";
+
+import { useGetAllUsersQuery } from "../usersApiSlice";
 
 const NewMembers = () => {
   const { data, isError, isFetching, isLoading, isSuccess, error } =

@@ -1,9 +1,11 @@
 import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
-import { Rating } from "../../../components";
 import { Button } from "primereact/button";
-import { useAddItemMutation } from "../../cart/cartApiSlice";
-import { useRemoveWishlistItemMutation } from "../../wishlist/wishlistsApiSlice";
+
+import { Rating } from "../../../components";
+
+import { useAddItemMutation } from "../../cart";
+import { useRemoveWishlistItemMutation } from "../wishlistsApiSlice";
 
 const WishlistItem = ({
   images,

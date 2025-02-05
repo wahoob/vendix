@@ -3,17 +3,19 @@ import { Paginator } from "primereact/paginator";
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectFilters } from "../productSlice";
+import { Toast } from "primereact/toast";
 
 import { Browse, Sort } from "../../../utils/icons.utils";
+
 import {
   AsyncContentWrapper,
   IconicDropdown,
   IconicMultiSelect,
 } from "../../../components";
 import ProductView from "./ProductView";
+
 import useCustomGetProductsQuery from "../hooks/useCustomGetProductsQuery";
-import CategoryNavigationBar from "../../categories/components/CategoryNavigationBar";
-import { Toast } from "primereact/toast";
+import { CategoryNavigationBar } from "../../categories";
 
 const ProductsList = () => {
   const toast = useRef(null);

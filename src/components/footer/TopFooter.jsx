@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { appStore, googlePlay, logo } from "../../assets/images";
 import { Headphone, Map, Send, Time } from "../../utils/icons.utils";
+
+import { appStore, googlePlay, logo } from "../../assets/images";
 
 import IconLabel from "./IconLabel";
 import FooterElement from "./FooterSection";

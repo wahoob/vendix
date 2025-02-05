@@ -1,7 +1,9 @@
 import { Rating } from "primereact/rating";
-import { person } from "../../../assets/images";
-import { getTimeToNow } from "../../../utils/functions.utils";
 import dayjs from "dayjs";
+
+import { person } from "../../../assets/images";
+
+import { getTimeToNow } from "../../../utils/functions.utils";
 
 const ReviewCard = ({
   image,

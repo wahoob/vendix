@@ -1,12 +1,14 @@
 import { Dialog } from "primereact/dialog";
-import { useCheckoutMutation } from "../cartApiSlice";
 import { useSelector } from "react-redux";
-import { selectCurrentAddress } from "../../users/usersApiSlice";
 import { useRef } from "react";
-import { InputField, ProgressStepper } from "../../../components";
-import CartSummary from "./CartSummary";
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
+
+import { InputField, ProgressStepper } from "../../../components";
+import CartSummary from "./CartSummary";
+
+import { useCheckoutMutation } from "../cartApiSlice";
+import { selectCurrentAddress } from "../../users";
 
 const BillingDetails = ({ visible, onHide }) => {
   const stepperRef = useRef(null);

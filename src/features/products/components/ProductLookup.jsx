@@ -3,13 +3,13 @@ import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import { useDebounceValue } from "usehooks-ts";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import CategoryDropdown from "../../categories/components/CategoryDropdown";
 import ProductLookupResultsPanel from "./ProductLookupResultsPanel";
 import ProductLookupForm from "./ProductLookupForm";
 
 import { useSearchProductsQuery } from "../productsApiSlice";
-import { useSelector } from "react-redux";
 import { selectProductsUI } from "../productSlice";
 
 const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {

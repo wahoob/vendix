@@ -1,8 +1,9 @@
-import { useRefetchMutation } from "../authApiSlice";
 import { useSelector } from "react-redux";
-import { selectCurrentToken } from "../authSlice";
-import { usePersist } from "../../../hooks";
 import { useMountEffect } from "primereact/hooks";
+
+import { useRefetchMutation } from "../authApiSlice";
+import { usePersist } from "../../../hooks";
+import { selectCurrentToken } from "../authSlice";
 
 const useVerifyToken = () => {
   const token = useSelector(selectCurrentToken);

@@ -1,7 +1,8 @@
 import { useRef } from "react";
-import { Banner, BreadCrumbNav } from "../components";
-import WishlistList from "../features/wishlist/components/WishlistList";
 import { Toast } from "primereact/toast";
+
+import { Banner, BreadCrumbNav } from "../components";
+import { WishlistList } from "../features/wishlist";
 
 const Wishlist = () => {
   const toast = useRef(null);

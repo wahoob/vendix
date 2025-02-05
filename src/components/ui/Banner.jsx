@@ -1,6 +1,7 @@
 import { classNames } from "primereact/utils";
 
 import { SubscribeBox } from "../";
+
 import { paperFlight, postMan } from "../../assets/images";
 
 const Banner = () => {

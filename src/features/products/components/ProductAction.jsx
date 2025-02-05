@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { NumberInput } from "../../../components";
 import { Button } from "primereact/button";
+
 import { ArrowCompare, Cart, Heart } from "../../../utils/icons.utils";
-import { useAddItemMutation } from "../../cart/cartApiSlice";
-import { useAddWishlistItemMutation } from "../../wishlist/wishlistsApiSlice";
+
+import { NumberInput } from "../../../components";
+
+import { useAddItemMutation } from "../../cart";
+import { useAddWishlistItemMutation } from "../../wishlist";
 
 const ProductAction = ({ product, toast }) => {
   const [value, setValue] = useState(1);

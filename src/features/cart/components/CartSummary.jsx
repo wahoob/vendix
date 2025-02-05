@@ -1,5 +1,7 @@
 import { classNames } from "primereact/utils";
+
 import { Cart } from "../../../utils/icons.utils";
+
 import { useGetCartQuery } from "../cartApiSlice";
 
 const CartSummary = ({ onHide }) => {

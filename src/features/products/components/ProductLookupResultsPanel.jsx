@@ -1,8 +1,9 @@
 import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AsyncContentWrapper } from "../../../components";
-import { useDispatch, useSelector } from "react-redux";
+
 import { hideSearchResults, selectProductsUI } from "../productSlice";
 
 const ProductResultsPanel = ({

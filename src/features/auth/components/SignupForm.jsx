@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "primereact/button";
-import { InputField, SpinnerCheckmark } from "../../../components";
 import { Link, useOutletContext } from "react-router-dom";
-import { useSignupMutation } from "../authApiSlice";
 import { Divider } from "primereact/divider";
+
 import SocialAuthButtons from "./SocialAuthButtons";
+import { InputField, SpinnerCheckmark } from "../../../components";
+
+import { useSignupMutation } from "../authApiSlice";
 
 const SignupForm = () => {
   const [signup, { isLoading, isSuccess, isError, error }] =

@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useGetProductBySlugQuery } from "../productsApiSlice";
+
 import { AsyncContentWrapper, ImageGallery } from "../../../components";
 import ProductInfo from "./ProductInfo";
 import ProductTabs from "./ProductTabs";
+
+import { useGetProductBySlugQuery } from "../productsApiSlice";
 
 const ProductDetails = () => {
   const { slug } = useParams();

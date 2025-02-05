@@ -1,7 +1,8 @@
 import { classNames } from "primereact/utils";
 
-import { useGetBrandsQuery } from "../productsApiSlice";
 import { AsyncContentWrapper, SelectableOption } from "../../../components";
+
+import { useGetBrandsQuery } from "../productsApiSlice";
 
 const BrandsList = ({ selectedBrands, setSelectedBrands }) => {
   const { isLoading, data, isError, isSuccess, error, isFetching } =

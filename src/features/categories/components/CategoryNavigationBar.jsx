@@ -1,6 +1,7 @@
 import { classNames } from "primereact/utils";
 
 import { AsyncContentWrapper } from "../../../components";
+
 import { useGetCategoriesQuery } from "../categoriesApiSlice";
 import useHorizontalScroll from "../hooks/useHorizontalScroll";
 

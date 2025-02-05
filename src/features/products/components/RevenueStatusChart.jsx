@@ -8,7 +8,9 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+
 import { AsyncContentWrapper } from "../../../components";
+
 import { useGetProductsOverviewQuery } from "../productsApiSlice";
 import prepareBarChartData from "../utils/prepareBarChartData";
 

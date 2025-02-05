@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import {
   Cart,
   Dashboard,
@@ -10,6 +11,7 @@ import {
   VerifyEmail,
   Wishlist,
 } from "../pages";
+
 import {
   AuthWrapper,
   PageContainer,

@@ -9,12 +9,12 @@ import { Compare, Cart, Person, Heart, Map } from "../../utils/icons.utils";
 import { logo } from "../../assets/images";
 
 import { TagButton, IconicDropdown } from "../";
-import ProductLookup from "../../features/products/components/ProductLookup";
+import { ProductLookup } from "../../features/products";
 
-import { toggleSidebar } from "../../features/sidebar/sidebarSlice";
-import { useGetCartQuery } from "../../features/cart/cartApiSlice";
-import { useGetWishlistQuery } from "../../features/wishlist/wishlistsApiSlice";
-import useAuth from "../../features/auth/hooks/useAuth";
+import { toggleSidebar } from "../../features/sidebar";
+import { useGetCartQuery } from "../../features/cart";
+import { useGetWishlistQuery } from "../../features/wishlist";
+import { useAuth } from "../../features/auth";
 
 const Navigation = () => {
   const [selectedLocation, setSelectedLocation] = useState(1);

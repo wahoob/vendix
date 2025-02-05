@@ -1,10 +1,8 @@
 import { useState } from "react";
 
 import { Sidebar, SlideShow, Banner } from "../components";
-
-import CategoryNavigationBar from "../features/categories/components/CategoryNavigationBar";
-import PopularProducts from "../features/products/components/PopularProducts";
-import DealsProducts from "../features/products/components/DealsProducts";
+import { CategoryNavigationBar } from "../features/categories";
+import { PopularProducts, DealsProducts } from "../features/products";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");

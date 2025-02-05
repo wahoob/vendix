@@ -2,8 +2,10 @@ import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
 
 import { Cart } from "../../../utils/icons.utils";
+
 import { Rating } from "../../../components";
-import { useAddItemMutation } from "../../cart/cartApiSlice";
+
+import { useAddItemMutation } from "../../cart";
 
 const ProductView = ({
   images,

@@ -2,6 +2,7 @@ import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   hideSearchResults,
   selectProductsUI,

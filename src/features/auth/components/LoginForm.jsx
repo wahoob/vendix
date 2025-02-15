@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "primereact/button";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
@@ -12,6 +11,8 @@ import { Checkbox, InputField, SpinnerCheckmark } from "../../../components";
 import { usePersist } from "../../../hooks";
 import { useSendLoginMutation } from "../authApiSlice.js";
 
+import loginSchema from "../validations/loginSchema.js";
+
 const LoginForm = () => {
   const [persist, setPersist] = usePersist();
   const { showPrompt } = useOutletContext();
@@ -20,17 +21,12 @@ const LoginForm = () => {
     useSendLoginMutation();
   const navigate = useNavigate();
 
-  const schema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   const onSubmit = async (data) => {

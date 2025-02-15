@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "primereact/button";
 import { Link, useOutletContext } from "react-router-dom";
@@ -10,29 +9,19 @@ import { InputField, SpinnerCheckmark } from "../../../components";
 
 import { useSignupMutation } from "../authApiSlice";
 
+import signupSchema from "../validations/signupSchema";
+
 const SignupForm = () => {
   const [signup, { isLoading, isSuccess, isError, error }] =
     useSignupMutation();
   const { showPrompt } = useOutletContext();
-
-  const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    username: yup.string().min(3).required(),
-    email: yup.string().email().required(),
-    password: yup.string().min(8).required(),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref("password"), null])
-      .required(),
-  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signupSchema),
   });
 
   const onSubmit = async (data) => {

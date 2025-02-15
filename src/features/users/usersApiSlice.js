@@ -27,26 +27,51 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     }),
 
     getMe: builder.query({
-      query: "/users/me",
+      query: () => "/users/me",
       transformResponse: (response) => response.data.user,
 
-      // onQueryStarted: async (_args, { queryFulfilled, dispatch, getState }) => {
-      //   const response = await queryFulfilled;
-      //   console.log(response);
+      onQueryStarted: async (_args, { queryFulfilled, dispatch, getState }) => {
+        const response = await queryFulfilled;
 
-      //   // const selectedAddressId = getState().users.selectedAddressId;
-      //   // const idExist = response.data.data.user.addresses.find(
-      //   //   (addr) => addr._id === selectedAddressId
-      //   // );
+        const selectedAddressId = getState().users.selectedAddressId;
+        const idExist = response.data.addresses.find(
+          (addr) => addr._id === selectedAddressId
+        );
 
-      //   // if (!idExist) {
-      //   //   dispatch(
-      //   //     setAddress({
-      //   //       addressId: response.data.data.user.addresses?.[0]?._id,
-      //   //     })
-      //   //   );
-      //   // }
-      // },
+        if (!idExist) {
+          dispatch(
+            setAddress({
+              addressId: response.data.addresses?.[0]?._id,
+            })
+          );
+        }
+      },
+    }),
+
+    updateMe: builder.mutation({
+      query: (data) => ({
+        url: "/users/me",
+        method: "PATCH",
+        body: data,
+      }),
+
+      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+        const usersResult = dispatch(
+          usersApiSlice.util.updateQueryData("getMe", undefined, (draft) => {
+            Object.keys(args).forEach((key) => {
+              if (key in draft) {
+                draft[key] = args[key];
+              }
+            });
+          })
+        );
+
+        try {
+          await queryFulfilled;
+        } catch {
+          usersResult.undo();
+        }
+      },
     }),
 
     addAddress: builder.mutation({
@@ -146,6 +171,7 @@ export const {
   useUpdateAddressMutation,
   useRemoveAddressMutation,
   useGetAllUsersQuery,
+  useUpdateMeMutation,
 } = usersApiSlice;
 
 export const selectUserResult = usersApiSlice.endpoints.getMe.select();

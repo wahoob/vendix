@@ -2,10 +2,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   Cart,
+  ChangePassword,
   Dashboard,
+  Deactivate,
   Home,
   Login,
   Product,
+  ProfileSettings,
   Shop,
   Signup,
   VerifyEmail,
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
         element: <PageContainer />,
         children: [
           {
-            path: "/",
+            index: true,
             element: <Home />,
           },
           {
@@ -81,16 +84,32 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/",
-        // element: <ProtectedLayout />,
+        path: "dashboard",
+        // element: <ProtectedLayout allowedRoles={["admin", "vendor", "user"]} />,
         children: [
           {
-            path: "/",
             element: <DashboardContainer />,
             children: [
               {
-                path: "dashboard",
+                index: true,
                 element: <Dashboard />,
+              },
+              {
+                path: "profile-settings",
+                children: [
+                  {
+                    index: true,
+                    element: <ProfileSettings />,
+                  },
+                  {
+                    path: "password",
+                    element: <ChangePassword />,
+                  },
+                  {
+                    path: "deactivate",
+                    element: <Deactivate />,
+                  },
+                ],
               },
             ],
           },

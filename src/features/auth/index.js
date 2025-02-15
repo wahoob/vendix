@@ -2,6 +2,7 @@ export { default as LoginForm } from "./components/LoginForm";
 export { default as SignupForm } from "./components/SignupForm";
 export { default as EmailVerificationSuccess } from "./components/EmailVerificationSuccess";
 export { default as EmailVerificationPrompt } from "./components/EmailVerificationPrompt";
+export { default as PasswordForm } from "./components/PasswordForm";
 
 export { default as useAuth } from "./hooks/useAuth";
 export { default as useVerifyToken } from "./hooks/useVerifyToken";
@@ -13,6 +14,8 @@ export {
   useSignupMutation,
   useResendVerifyMutation,
   useVerifyEmailMutation,
+  useChangePasswordMutation,
+  useUpdateEmailMutation,
 } from "./authApiSlice";
 
 export { setCredentials, logout, selectCurrentToken } from "./authSlice";

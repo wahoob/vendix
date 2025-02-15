@@ -37,7 +37,14 @@ export default [
         { allowConstantExport: true },
       ],
       "react/prop-types": "off", // Disable prop types warning
-      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
     },
   },
 ];

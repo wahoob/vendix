@@ -2,7 +2,6 @@ import { classNames } from "primereact/utils";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,6 +12,8 @@ import {
   useUpdateAddressMutation,
 } from "../usersApiSlice";
 import { selectAddress, setAddress } from "../usersSlice";
+
+import addressSchema from "../validations/addressSchema";
 
 const AddressItem = ({ country, state, city, street, _id }) => {
   const [openForm, setOpenForm] = useState(false);
@@ -30,19 +31,12 @@ const AddressItem = ({ country, state, city, street, _id }) => {
     await remove({ addressId: _id }).unwrap();
   };
 
-  const schema = yup.object().shape({
-    country: yup.string().required(),
-    state: yup.string().required(),
-    city: yup.string().required(),
-    street: yup.string().required(),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(addressSchema),
   });
 
   const [update, { isLoading, isSuccess, isError, isUninitialized, reset }] =

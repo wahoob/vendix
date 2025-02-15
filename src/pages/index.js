@@ -7,3 +7,6 @@ export { default as VerifyEmail } from "./VerifyEmail";
 export { default as Cart } from "./Cart";
 export { default as Wishlist } from "./Wishlist";
 export { default as Dashboard } from "./Dashboard";
+export { default as ProfileSettings } from "./ProfileSettings";
+export { default as ChangePassword } from "./ChangePassword";
+export { default as Deactivate } from "./Deactivate";

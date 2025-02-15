@@ -3,11 +3,12 @@ import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
-import * as yup from "yup";
 
 import { InputField } from "../../../components";
 
 import { useAddAddressMutation } from "../usersApiSlice";
+
+import addressSchema from "../validations/addressSchema";
 
 const AddressForm = ({ visible, onHide }) => {
   const [
@@ -15,20 +16,13 @@ const AddressForm = ({ visible, onHide }) => {
     { isLoading, isSuccess, isError, isUninitialized, reset },
   ] = useAddAddressMutation();
 
-  const schema = yup.object().shape({
-    country: yup.string().required(),
-    state: yup.string().required(),
-    city: yup.string().required(),
-    street: yup.string().required(),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset: resetForm,
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(addressSchema),
   });
 
   const onSubmit = async (data) => {

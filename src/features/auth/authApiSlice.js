@@ -35,11 +35,11 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
 
-      onQueryStarted: async (args, { queryFulfilled, dispatch }) => {
+      onQueryStarted: async (_args, { queryFulfilled, dispatch }) => {
         try {
-          await queryFulfilled;
           dispatch(logout());
           dispatch(apiSlice.util.resetApiState()); //it may needs a timeout
+          await queryFulfilled;
         } catch (err) {
           console.error("Error details:", err.message || err.data || err);
         }
@@ -93,6 +93,35 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+
+    changePassword: builder.mutation({
+      query: ({ currentPassword, password, passwordConfirm }) => ({
+        url: `/users/updatePassword`,
+        method: "PATCH",
+        body: {
+          currentPassword,
+          password,
+          passwordConfirm,
+        },
+      }),
+
+      onQueryStarted: async (_args, { dispatch, queryFulfilled }) => {
+        try {
+          const response = await queryFulfilled;
+          dispatch(setCredentials(response.data));
+        } catch (err) {
+          console.error("Error details:", err.message || err.data || err);
+        }
+      },
+    }),
+
+    updateEmail: builder.mutation({
+      query: ({ email }) => ({
+        url: "/users/updateEmail",
+        method: "PATCH",
+        body: { email },
+      }),
+    }),
   }),
 });
 
@@ -103,4 +132,6 @@ export const {
   useSignupMutation,
   useResendVerifyMutation,
   useVerifyEmailMutation,
+  useChangePasswordMutation,
+  useUpdateEmailMutation,
 } = authApiSlice;

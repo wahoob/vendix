@@ -1,4 +1,4 @@
-const prepareBarChartData = ({ datasets, data, labels }) => ({
+const prepareBarChartData = ({ datasets, data = [], labels }) => ({
   labels: labels.map(({ label }) => label),
   datasets: datasets.map((dataset) => ({
     ...dataset,

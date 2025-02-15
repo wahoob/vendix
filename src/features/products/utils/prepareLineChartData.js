@@ -5,7 +5,7 @@ const prepareLineChartData = ({ datasets, additionalData }) => {
 
   const labels = lastTwelveMonths.map(({ label }) => label);
 
-  const datasetsWithData = datasets.map(({ data: dataEntry, ...rest }) => {
+  const datasetsWithData = datasets.map(({ data: dataEntry = [], ...rest }) => {
     const data = lastTwelveMonths.map(({ year, month }) => {
       const existingEntry = dataEntry.find(
         (entry) => entry.year === year && entry.month === month

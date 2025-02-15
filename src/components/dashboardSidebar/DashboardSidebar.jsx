@@ -1,17 +1,19 @@
 import { Button } from "primereact/button";
 import { PanelMenu } from "primereact/panelmenu";
 import { classNames } from "primereact/utils";
-import { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { logo } from "../../assets/images";
 
 const DashboardSidebar = ({ isOpen, close }) => {
+  const { pathname } = useLocation();
+  const [activeItem, setActiveItem] = useState(pathname.split("/").pop());
+
   const navigate = useNavigate();
-  const activeItem = useRef("dashboard");
 
   const handleItemClick = ({ item }) => {
-    activeItem.current = item.key;
+    setActiveItem(item.key);
 
     const link =
       item.key === "dashboard" ? "/dashboard" : `/dashboard/${item.key}`;
@@ -32,18 +34,13 @@ const DashboardSidebar = ({ isOpen, close }) => {
       ],
     },
     {
-      key: "account",
-      label: "account",
+      key: "profile",
+      label: "profile",
       icon: "pi pi-user",
       items: [
         {
-          key: "account-settings",
-          label: "account settings",
-          icon: "pi pi-circle-fill",
-        },
-        {
-          key: "password",
-          label: "password",
+          key: "profile-settings",
+          label: "profile settings",
           icon: "pi pi-circle-fill",
         },
       ],
@@ -176,7 +173,7 @@ const DashboardSidebar = ({ isOpen, close }) => {
               className: classNames(
                 "text-sm text-neutral-500 font-semibold capitalize",
                 {
-                  "text-[#3BB77E]": context.item.key === activeItem.current,
+                  "text-[#3BB77E]": context.item.key === activeItem,
                 }
               ),
             }),

@@ -6,11 +6,12 @@ import { selectAddress, setAddress } from "./usersSlice";
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllUsers: builder.query({
-      query: ({ sort, limit }) => {
+      query: ({ sort, limit, page }) => {
         const params = new URLSearchParams();
 
         if (sort) params.append("sort", sort);
         if (limit) params.append("limit", limit);
+        if (page) params.append("page", page);
 
         return {
           url: `/users?${params.toString()}`,
@@ -18,11 +19,47 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             response.status === 200 && !result.isError,
         };
       },
-      transformResponse: (response) => [
-        ...response.data.users.map((user) => {
-          user.id = user._id;
-          return user;
-        }),
+
+      transformResponse: (response) => ({
+        result: response.result,
+        total: response.total,
+        users: response.data.users.map((user) => ({
+          ...user,
+          id: user._id,
+        })),
+      }),
+
+      providesTags: (result) =>
+        result?.users
+          ? [
+              ...result.users.map(({ id }) => ({ type: "User", id })),
+              { type: "User", id: "LIST" },
+            ]
+          : [{ type: "User", id: "LIST" }],
+    }),
+
+    updateUser: builder.mutation({
+      query: ({ id, ...rest }) => ({
+        url: `/users/${id}`,
+        method: "PATCH",
+        body: rest,
+      }),
+
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: "User", id },
+        { type: "User", id: "LIST" },
+      ],
+    }),
+
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: "User", id },
+        { type: "User", id: "LIST" },
       ],
     }),
 
@@ -172,6 +209,8 @@ export const {
   useRemoveAddressMutation,
   useGetAllUsersQuery,
   useUpdateMeMutation,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
 } = usersApiSlice;
 
 export const selectUserResult = usersApiSlice.endpoints.getMe.select();

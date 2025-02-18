@@ -49,21 +49,17 @@ const NavbarBottom = () => {
               "hover:[&>*]:text-[#3BB77E]"
             )}
           >
+            <Button label="Home" severity="success" />
             <Button
-              label="Deals"
+              label="Shop"
               icon={<Deals />}
               pt={{
                 root: { className: "gap-1" },
               }}
               severity="success"
-            />
-            <Button label="Home" severity="success" />
-            <Button label="About" severity="success" />
-            <Button
-              label="Shop"
-              severity="success"
               onClick={() => navigate("/shop")}
             />
+
             <Button label="Vendors" severity="success" />
             <Button label="Contact" severity="success" />
           </div>
@@ -76,7 +72,7 @@ const NavbarBottom = () => {
 
           <div className="row flex-col">
             <h3 className="font-quicksand text-[#3BB77E] font-bold leading-[26px] text-2xl">
-              1900 - 888
+              19xx - 0x0
             </h3>
             <p className="text-xs font-medium text-[#7E7E7E] leading-3">
               24/7 Support Center

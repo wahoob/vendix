@@ -11,6 +11,7 @@ import {
   ProfileSettings,
   Shop,
   Signup,
+  Users,
   VerifyEmail,
   Wishlist,
 } from "../pages";
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        // element: <ProtectedLayout allowedRoles={["admin", "vendor", "user"]} />,
+        // element: <ProtectedLayout />,
         children: [
           {
             element: <DashboardContainer />,
@@ -108,6 +109,16 @@ const router = createBrowserRouter([
                   {
                     path: "deactivate",
                     element: <Deactivate />,
+                  },
+                ],
+              },
+              {
+                path: "users",
+                element: <ProtectedLayout allowedRoles={["admin"]} />,
+                children: [
+                  {
+                    index: true,
+                    element: <Users />,
                   },
                 ],
               },

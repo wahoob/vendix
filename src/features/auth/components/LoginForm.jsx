@@ -52,14 +52,26 @@ const LoginForm = () => {
   return (
     <div className="space-y-4">
       <div className="space-y-10">
-        <div className="row gap-2">
-          <h1 className="text-3xl font-semibold">Log In</h1>
-          <SpinnerCheckmark
-            isLoading={isLoading}
-            isSuccess={isSuccess}
-            isError={isError}
-            error={error}
-          />
+        <div className="row justify-between">
+          <div className="row gap-2">
+            <h1 className="text-3xl font-semibold">Log In</h1>
+            <SpinnerCheckmark
+              isLoading={isLoading}
+              isSuccess={isSuccess}
+              isError={isError}
+              error={error}
+            />
+          </div>
+
+          <Link to="/">
+            <Button
+              label="Continue as guest (limited features!)"
+              pt={{
+                label: "font-normal text-sm hover:text-[#3BB77E]",
+              }}
+              severity="success"
+            />
+          </Link>
         </div>
 
         <div className="space-y-2.5">
@@ -73,6 +85,7 @@ const LoginForm = () => {
               icon="pi pi-envelope"
               register={register}
               error={errors.email}
+              initialValue="admin@example.com"
             />
             <InputField
               name="password"
@@ -81,6 +94,7 @@ const LoginForm = () => {
               placeholder="Password"
               register={register}
               error={errors.password}
+              initialValue="test1234"
             />
 
             <Button
@@ -111,6 +125,15 @@ const LoginForm = () => {
             >
               Forgot password?
             </Link>
+          </div>
+
+          <div className="text-sm [&>p]:text-[#969AB8] [&_span]:font-medium [&_span]:text-black">
+            <p>
+              email address: <span>admin@example.com</span>
+            </p>
+            <p>
+              password: <span>test1234</span>
+            </p>
           </div>
         </div>
 

@@ -16,7 +16,7 @@ const NewMembers = () => {
       isSuccess={isSuccess}
       render={() => (
         <div className="space-y-6">
-          {data.map((user) => (
+          {data.users.map((user) => (
             <UserCard
               key={user.id}
               name={`${user.fullName.firstName} ${user.fullName.lastName}`}

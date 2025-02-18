@@ -5,10 +5,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Compare, Cart, Person, Heart, Map } from "../../utils/icons.utils";
+import { Cart, Person, Heart, Map } from "../../utils/icons.utils";
 import { logo } from "../../assets/images";
 
-import { TagButton, IconicDropdown } from "../";
+import { IconicDropdown, TagButton } from "../";
 import { ProductLookup } from "../../features/products";
 
 import { toggleSidebar } from "../../features/sidebar";
@@ -17,11 +17,11 @@ import { useGetWishlistQuery } from "../../features/wishlist";
 import { useAuth } from "../../features/auth";
 
 const Navigation = () => {
-  const [selectedLocation, setSelectedLocation] = useState(1);
   const { data: cart } = useGetCartQuery();
   const { data: wishlist } = useGetWishlistQuery();
   const { isLoggedIn, username } = useAuth();
 
+  const [selectedLocation, setSelectedLocation] = useState(1);
   const [showFullWidth, setShowFullWidth] = useState(false);
   const dispatch = useDispatch();
 
@@ -110,10 +110,6 @@ const Navigation = () => {
                 onClick={() => setShowFullWidth(true)}
               />
               <Divider className="h-6 bg-[#CACACA]" />
-            </li>
-
-            <li className="max-sm:hidden">
-              <TagButton Icon={Compare} badge={3} text={"Compare"} to={"/"} />
             </li>
 
             <li className="max-sm:hidden">

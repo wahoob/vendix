@@ -10,3 +10,4 @@ export { default as Dashboard } from "./Dashboard";
 export { default as ProfileSettings } from "./ProfileSettings";
 export { default as ChangePassword } from "./ChangePassword";
 export { default as Deactivate } from "./Deactivate";
+export { default as Users } from "./Users";

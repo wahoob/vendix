@@ -6,8 +6,18 @@ import { useState } from "react";
 import VerticalDivider from "../ui/VerticalDivider";
 
 const TopNavbar = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+
+  const currency = [
+    {
+      name: "USD",
+      command: () => localStorage.setItem("currency", "usd"),
+    },
+    {
+      name: "EGY",
+      command: () => localStorage.setItem("currency", "egy"),
+    },
+  ];
 
   return (
     <header
@@ -30,10 +40,6 @@ const TopNavbar = () => {
             "hover:[&>li]:text-[#545454]"
           )}
         >
-          <li>
-            <Link to="/">About Us</Link>
-          </li>
-          <VerticalDivider />
           <li>
             <Link to="/">My Account</Link>
           </li>
@@ -60,32 +66,15 @@ const TopNavbar = () => {
         >
           <p>
             Need help? Call Us:
-            <span className="text-[#3BB77E] font-semibold">+ 1800 900</span>
+            <span className="text-[#3BB77E] font-semibold">+ 18xx 9x0</span>
           </p>
-
-          <VerticalDivider />
-
-          <Dropdown
-            placeholder={selectedLanguage}
-            onChange={(e) => setSelectedLanguage(e.value)}
-            options={["English", "Arabic"]}
-            pt={{
-              root: { className: "gap-0.5" },
-              input: {
-                className:
-                  "text-[#7E7E7E] group-hover:text-[#545454] text-[13px] font-medium",
-              },
-              trigger: { className: "size-[7px]" },
-              item: { className: "text-[13px] font-medium" },
-            }}
-          />
 
           <VerticalDivider />
 
           <Dropdown
             placeholder={selectedCurrency}
             onChange={(e) => setSelectedCurrency(e.value)}
-            options={["USD", "EGY"]}
+            options={currency}
             pt={{
               root: { className: "gap-0.5" },
               input: {
@@ -95,6 +84,7 @@ const TopNavbar = () => {
               trigger: { className: "size-[7px]" },
               item: { className: "text-[13px] font-medium" },
             }}
+            // valueTemplate={selectedTemplate}
           />
         </div>
       </div>

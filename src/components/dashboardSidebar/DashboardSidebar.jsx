@@ -67,11 +67,6 @@ const DashboardSidebar = ({ isOpen, close }) => {
           label: "view all vendors",
           icon: "pi pi-circle-fill",
         },
-        {
-          key: "vendors-requests",
-          label: "view vendors requests",
-          icon: "pi pi-circle-fill",
-        },
       ],
     },
     {
@@ -130,7 +125,7 @@ const DashboardSidebar = ({ isOpen, close }) => {
         {
           "left-0": isOpen,
           "lg:hidden max-lg:-left-96": !isOpen,
-        }
+        },
       )}
     >
       <div className="row border-b p-4 lg:hidden">
@@ -174,7 +169,7 @@ const DashboardSidebar = ({ isOpen, close }) => {
                 "text-sm text-neutral-500 font-semibold capitalize",
                 {
                   "text-[#3BB77E]": context.item.key === activeItem,
-                }
+                },
               ),
             }),
             submenuicon: "order-1 ml-auto",

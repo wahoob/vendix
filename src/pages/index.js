@@ -11,3 +11,4 @@ export { default as ProfileSettings } from "./ProfileSettings";
 export { default as ChangePassword } from "./ChangePassword";
 export { default as Deactivate } from "./Deactivate";
 export { default as Users } from "./Users";
+export { default as Vendors } from "./Vendors";

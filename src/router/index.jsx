@@ -12,6 +12,7 @@ import {
   Shop,
   Signup,
   Users,
+  Vendors,
   VerifyEmail,
   Wishlist,
 } from "../pages";
@@ -86,7 +87,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        // element: <ProtectedLayout />,
+        element: <ProtectedLayout />,
         children: [
           {
             element: <DashboardContainer />,
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
                   },
                 ],
               },
+              {
+                path: "vendors",
+                element: <Vendors/>
+              }
             ],
           },
         ],

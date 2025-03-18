@@ -11,11 +11,13 @@ const Users = () => {
 
   return (
     <>
-      <UserUpdatePrompt
-        visible={!!userData}
-        user={userData}
-        onHide={hideUpdatePrompt}
-      />
+      {!!userData && (
+        <UserUpdatePrompt
+          visible={!!userData}
+          user={userData}
+          onHide={hideUpdatePrompt}
+        />
+      )}
       <div className="space-y-4">
         <h1 className="text-4xl font-bold mb-1">Users list</h1>
 

@@ -1,18 +1,19 @@
 import { Button } from "primereact/button";
-import { Rating } from "primereact/rating";
 import { classNames } from "primereact/utils";
 
 import person from "../../../assets/images/person.jpg";
 
-import { AsyncContentWrapper } from "../../../components";
+import {
+  AsyncContentWrapper,
+  Rating,
+  SocialMediaLinks,
+} from "../../../components";
 
 import { useGetVendorQuery } from "../vendorsApiSlice";
 
 const VendorOverview = ({ _id: id }) => {
   const { isLoading, isError, isFetching, isSuccess, error, data } =
     useGetVendorQuery({ id });
-
-  const openLink = (url) => window.open(url, "_blank").focus();
 
   const content = () => {
     const {
@@ -22,7 +23,6 @@ const VendorOverview = ({ _id: id }) => {
       businessDescription,
       businessAddress,
     } = data;
-    const { facebook, instagram, twitter } = socialMediaLinks;
     const { country, city, state, street } = businessAddress;
 
     return (
@@ -33,14 +33,14 @@ const VendorOverview = ({ _id: id }) => {
           <div
             className={classNames(
               "flex items-start justify-between gap-8 flex-wrap",
-              "border-b-2 pb-8"
+              "border-b-2 pb-8",
             )}
           >
             <div className="relative flex flex-wrap gap-4">
               <div
                 className={classNames(
                   "size-44 min-w-44 rounded-[5px] overflow-hidden shadow-shadow6",
-                  "md:absolute -bottom-2 left-4 mx-auto"
+                  "md:absolute -bottom-2 left-4 mx-auto",
                 )}
               >
                 <img
@@ -95,41 +95,18 @@ const VendorOverview = ({ _id: id }) => {
             <div className="rounded-md space-y-1">
               <p className="text-sm font-quicksand font-bold">Rating:</p>
               <Rating
-                value={rating.ratingsAverage}
-                readOnly
-                cancel={false}
+                rating={rating}
                 pt={{
-                  root: { className: "gap-0.5" },
-                  item: { className: "size-3.5" },
-                  onIcon: { className: "text-[#3BB77E]" },
-                  offIcon: { className: "text-[#3BB77E]" },
+                  item: "size-3.5",
+                  onIcon: "text-[#3BB77E]",
+                  offIcon: "text-[#3BB77E]",
                 }}
-                title={rating.ratingsQuantity}
               />
             </div>
 
             <div className="space-y-2">
               <p className="text-sm font-quicksand font-bold">Social Media</p>
-              <ul className="row justify-between [&>*]:cursor-pointer text-[#3BB77E]">
-                <li
-                  className="hover:text-blue-600"
-                  onClick={() => openLink(facebook)}
-                >
-                  <i className="pi pi-facebook" />
-                </li>
-                <li
-                  className="hover:text-pink-500"
-                  onClick={() => openLink(instagram)}
-                >
-                  <i className="pi pi-instagram" />
-                </li>
-                <li
-                  className="hover:text-black"
-                  onClick={() => openLink(twitter)}
-                >
-                  <i className="pi pi-twitter" />
-                </li>
-              </ul>
+              <SocialMediaLinks {...socialMediaLinks} />
             </div>
 
             <div>

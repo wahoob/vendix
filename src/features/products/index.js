@@ -8,7 +8,7 @@ export { default as ProductDetails } from "./components/ProductDetails";
 export { default as ProductsList } from "./components/ProductsList";
 export { default as ProductFilterSearch } from "./components/ProductFilterSearch";
 export { default as ProductLookup } from "./components/ProductLookup";
-export { default as BrandsList } from "./components/BrandsList";
+export { default as BrandOptions } from "./components/BrandOptions";
 export { default as PriceSlider } from "./components/PriceSlider";
 
 export {

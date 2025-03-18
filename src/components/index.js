@@ -26,3 +26,4 @@ export { default as ProgressStepper } from "./ui/ProgressStepper";
 export { default as DashboardSidebar } from "./dashboardSidebar/DashboardSidebar";
 export { default as DashboardNavbar } from "./dashboardNavbar/DashboardNavbar";
 export { default as InfoBox } from "./ui/InfoBox";
+export { default as SocialMediaLinks } from "./ui/SocialMediaLinks";

@@ -4,7 +4,7 @@ import { AsyncContentWrapper, SelectableOption } from "../../../components";
 
 import { useGetVendorsQuery } from "../vendorsApiSlice";
 
-const VendorList = ({ selectedVendors, setSelectedVendors }) => {
+const VendorOptions = ({ selectedVendors, setSelectedVendors }) => {
   const { isLoading, data, isError, isSuccess, error, isFetching } =
     useGetVendorsQuery({
       fields: "businessName",
@@ -14,7 +14,7 @@ const VendorList = ({ selectedVendors, setSelectedVendors }) => {
     setSelectedVendors((prev) =>
       prev.includes(id)
         ? prev.filter((vendorId) => vendorId !== id)
-        : [...prev, id]
+        : [...prev, id],
     );
   };
 
@@ -24,7 +24,7 @@ const VendorList = ({ selectedVendors, setSelectedVendors }) => {
         className={classNames(
           "text-[#7E7E7E] text-sm font-black",
           "sticky top-0 z-20 bg-white",
-          "pb-1"
+          "pb-1",
         )}
       >
         Vendor
@@ -38,7 +38,7 @@ const VendorList = ({ selectedVendors, setSelectedVendors }) => {
         error={error}
         render={() => (
           <div className="space-y-0.5">
-            {data.map((vendor) => (
+            {data.vendors.map((vendor) => (
               <SelectableOption
                 key={vendor.id}
                 id={vendor.id}
@@ -54,4 +54,4 @@ const VendorList = ({ selectedVendors, setSelectedVendors }) => {
   );
 };
 
-export default VendorList;
+export default VendorOptions;

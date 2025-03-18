@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+// TODO: change location later
+export const roles = ["user", "vendor", "admin", "delivery"];
+
 const phoneRegex =
   /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
 
@@ -17,7 +20,7 @@ const profileSchema = yup.object().shape({
     }),
   email: yup.string().email().required(),
   profilePicture: yup.mixed().notRequired(),
-  role: yup.string().oneOf(["user", "vendor", "admin", "delivery"]).required(),
+  role: yup.string().oneOf(roles).required(),
 });
 
 export default profileSchema;

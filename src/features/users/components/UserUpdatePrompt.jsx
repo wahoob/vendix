@@ -1,12 +1,17 @@
 import { Dialog } from "primereact/dialog";
-import { useUpdateUserMutation } from "../usersApiSlice";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import profileSchema from "../validations/profileSchema";
-import { InputField } from "../../../components";
 import { Button } from "primereact/button";
-import { useEffect } from "react";
-import getChangedFields from "../utils/getChangedFields";
+import { Dropdown } from "primereact/dropdown";
+import { classNames } from "primereact/utils";
+
+import { InputField } from "../../../components";
+
+import { useUpdateUserMutation } from "../usersApiSlice";
+
+import profileSchema, { roles } from "../validations/profileSchema";
+
+import { getChangedFields } from "../../../utils/functions.utils";
 
 const pt = {
   label: "text-[15px]",
@@ -19,22 +24,20 @@ const UserUpdatePrompt = ({ visible, onHide, user }) => {
     register,
     formState: { errors, dirtyFields, isDirty },
     handleSubmit,
+    watch,
     setValue,
     reset,
   } = useForm({
     resolver: yupResolver(profileSchema),
+    defaultValues: {
+      firstName: user.fullName.firstName || "",
+      lastName: user.fullName.lastName || "",
+      username: user.username || "",
+      phone: user.phone || "",
+      email: user.email || "",
+      role: user.role || "",
+    },
   });
-
-  useEffect(() => {
-    if (user) {
-      setValue("firstName", user.fullName.firstName);
-      setValue("lastName", user.fullName.lastName);
-      setValue("username", user.username);
-      setValue("phone", user.phone || "");
-      setValue("email", user.email);
-      setValue("role", user.role);
-    }
-  }, [user, setValue]);
 
   const onSubmit = async (data) => {
     const changedFields = getChangedFields({ dirtyFields, data });
@@ -106,14 +109,23 @@ const UserUpdatePrompt = ({ visible, onHide, user }) => {
             error={errors.email}
             pt={pt}
           />
-          <InputField
-            placeholder="Type here"
-            name="role"
-            label="Role:"
-            register={register}
-            error={errors.role}
-            pt={pt}
-          />
+          <div>
+            <label className="text-[15px]">Role:</label>
+            <Dropdown
+              options={roles}
+              placeholder="Select a Role"
+              highlightOnSelect={false}
+              pt={{
+                root: classNames(
+                  "text-sm pl-5 py-[11px] shadow-none",
+                  "border border-solid rounded-lg",
+                  errors.role ? "border-red-400" : "border-[#E0E2E9]",
+                ),
+              }}
+              onChange={(e) => setValue("role", e.value, { shouldDirty: true })}
+              value={watch("role")}
+            />
+          </div>
         </div>
         <Button
           type="submit"

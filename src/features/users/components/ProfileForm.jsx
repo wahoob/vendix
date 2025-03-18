@@ -11,7 +11,7 @@ import { AsyncContentWrapper, InputField } from "../../../components";
 import { useGetMeQuery, useUpdateMeMutation } from "../usersApiSlice";
 import { useUpdateEmailMutation } from "../../auth";
 
-import getChangedFields from "../utils/getChangedFields";
+import { getChangedFields } from "../../../utils/functions.utils";
 
 import profileSchema from "../validations/profileSchema";
 
@@ -83,7 +83,7 @@ const ProfileForm = ({ show }) => {
         operations.map(async ({ fn, payload, afterSuccess }) => {
           await fn(payload).unwrap();
           if (afterSuccess) afterSuccess();
-        })
+        }),
       );
 
       reset({ ...data });
@@ -133,7 +133,7 @@ const ProfileForm = ({ show }) => {
               <div
                 className={classNames(
                   "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-y-6",
-                  "flex-1 w-full md:max-w-[75%]"
+                  "flex-1 w-full md:max-w-[75%]",
                 )}
               >
                 <InputField
@@ -198,7 +198,7 @@ const ProfileForm = ({ show }) => {
                   className={classNames(
                     "border-2 border-[#CFE4E3]",
                     "row gap-1.5 px-4 py-2 rounded",
-                    "max-w-60 cursor-pointer"
+                    "max-w-60 cursor-pointer",
                   )}
                 >
                   <i className="pi pi-cloud-upload" />

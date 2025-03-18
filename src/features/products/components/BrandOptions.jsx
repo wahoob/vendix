@@ -4,7 +4,7 @@ import { AsyncContentWrapper, SelectableOption } from "../../../components";
 
 import { useGetBrandsQuery } from "../productsApiSlice";
 
-const BrandsList = ({ selectedBrands, setSelectedBrands }) => {
+const BrandOptions = ({ selectedBrands, setSelectedBrands }) => {
   const { isLoading, data, isError, isSuccess, error, isFetching } =
     useGetBrandsQuery();
 
@@ -54,4 +54,4 @@ const BrandsList = ({ selectedBrands, setSelectedBrands }) => {
   );
 };
 
-export default BrandsList;
+export default BrandOptions;

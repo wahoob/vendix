@@ -6,8 +6,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { Filter } from "../../utils/icons.utils";
 
-import { VendorList } from "../../features/vendors";
-import { BrandsList, PriceSlider } from "../../features/products";
+import { VendorOptions } from "../../features/vendors";
+import { BrandOptions, PriceSlider } from "../../features/products";
 import { TitleLabel } from "../";
 
 import { setFilters } from "../../features/products";
@@ -45,12 +45,12 @@ const FilterList = () => {
           </div>
 
           <div className="space-y-6 [&>*]:h-[8.25rem] [&>*]:overflow-y-auto [&>*]:px-[31px]">
-            <VendorList
+            <VendorOptions
               selectedVendors={selectedVendors}
               setSelectedVendors={setSelectedVendors}
             />
 
-            <BrandsList
+            <BrandOptions
               selectedBrands={selectedBrands}
               setSelectedBrands={setSelectedBrands}
             />

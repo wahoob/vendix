@@ -12,7 +12,7 @@ const Banner = () => {
           "bg-footer-tabpanel",
           "px-9 py-12 sm:px-[4.875rem] sm:py-[5.25rem]",
           "rounded-[20px] relative",
-          "flex flex-col items-center"
+          "flex flex-col items-center",
         )}
       >
         <div className="space-y-4 text-center relative z-20">

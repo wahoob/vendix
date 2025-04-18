@@ -4,6 +4,7 @@ export { default as NewMembers } from "./components/NewMembers";
 export { default as ProfileForm } from "./components/ProfileForm";
 export { default as UsersList } from "./components/UsersList";
 export { default as UserUpdatePrompt } from "./components/UserUpdatePrompt";
+export { default as CustomerInfo } from "./components/CustomerInfo";
 
 export {
   useGetMeQuery,

@@ -10,7 +10,7 @@ const SubscribeBox = () => {
       className={classNames(
         "row max-sm:flex-col gap-y-2 gap-x-4",
         "w-full sm:w-fit md:mt-20 mt-10",
-        "sm:bg-white sm:rounded-full overflow-hidden"
+        "sm:bg-white sm:rounded-full overflow-hidden",
       )}
       onSubmit={handleSubmit}
     >
@@ -19,7 +19,7 @@ const SubscribeBox = () => {
           className={classNames(
             "pi pi-send",
             "text-[#7E7E7E] ml-6",
-            "max-sm:hidden"
+            "max-sm:hidden",
           )}
         ></i>
 
@@ -29,7 +29,7 @@ const SubscribeBox = () => {
           className={classNames(
             "sm:min-w-60",
             "placeholder:text-[#838383] max-sm:placeholder:text-sm",
-            "outline-none py-4 sm:py-[22px] px-4 w-full"
+            "outline-none py-4 sm:py-[22px] px-4 w-full",
           )}
         />
       </div>
@@ -39,7 +39,7 @@ const SubscribeBox = () => {
         className={classNames(
           "text-white font-quicksand font-medium",
           "bg-[#3BB77E] py-[22px] px-10 sm:rounded-full",
-          "max-sm:w-full"
+          "max-sm:w-full",
         )}
       >
         Subscribe

@@ -6,15 +6,20 @@ import {
   Dashboard,
   Deactivate,
   Home,
+  Invoices,
   Login,
+  Orders,
   Product,
   ProfileSettings,
   Shop,
   Signup,
+  Order,
   Users,
   Vendors,
   VerifyEmail,
   Wishlist,
+  Invoice,
+  NotFound,
 } from "../pages";
 
 import {
@@ -125,11 +130,41 @@ const router = createBrowserRouter([
               },
               {
                 path: "vendors",
-                element: <Vendors/>
-              }
+                element: <Vendors />,
+              },
+              {
+                path: "orders",
+                children: [
+                  {
+                    index: true,
+                    element: <Orders />,
+                  },
+                  {
+                    path: ":id",
+                    element: <Order />,
+                  },
+                ],
+              },
+              {
+                path: "invoices",
+                children: [
+                  {
+                    index: true,
+                    element: <Invoices />,
+                  },
+                  {
+                    path: ":id",
+                    element: <Invoice />,
+                  },
+                ],
+              },
             ],
           },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

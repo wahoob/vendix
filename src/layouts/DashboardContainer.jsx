@@ -19,7 +19,7 @@ const DashboardContainer = () => {
           className={classNames(
             "py-12 px-4 md:px-8 lg:px-12 bg-[#F8F9FA] flex-1",
             "text-[#383E50] font-quicksand",
-            "overflow-y-auto space-y-6"
+            "overflow-y-auto space-y-6",
           )}
         >
           <Outlet />

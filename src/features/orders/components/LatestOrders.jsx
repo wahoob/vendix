@@ -23,7 +23,7 @@ const LatestOrders = () => {
       error={error}
       render={() => (
         <DataTable
-          value={data}
+          value={data.orders}
           selectionMode="checkbox"
           selection={selectedProducts}
           onSelectionChange={(e) => setSelectedProducts(e.value)}

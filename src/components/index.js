@@ -27,3 +27,4 @@ export { default as DashboardSidebar } from "./dashboardSidebar/DashboardSidebar
 export { default as DashboardNavbar } from "./dashboardNavbar/DashboardNavbar";
 export { default as InfoBox } from "./ui/InfoBox";
 export { default as SocialMediaLinks } from "./ui/SocialMediaLinks";
+export { default as CardInfo } from "./ui/CardInfo";

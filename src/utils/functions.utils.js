@@ -19,6 +19,10 @@ export const formatShortDate = (date) => {
   return dayjs(date).format("D MMM, YYYY");
 };
 
+export const formatLongDate = (date) => {
+  return dayjs(date).format("ddd, MMM DD, YYYY, h:mA");
+};
+
 export const showPrice = (priceInDollar) => {
   if (localStorage.getItem("currency") == "egy")
     return `${(priceInDollar * 50).toFixed(2)}£`;

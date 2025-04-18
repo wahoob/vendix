@@ -10,6 +10,7 @@ export { default as ProductFilterSearch } from "./components/ProductFilterSearch
 export { default as ProductLookup } from "./components/ProductLookup";
 export { default as BrandOptions } from "./components/BrandOptions";
 export { default as PriceSlider } from "./components/PriceSlider";
+export { default as ProductsInOrder } from "./components/ProductsInOrder";
 
 export {
   useGetProductsQuery,

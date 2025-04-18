@@ -12,3 +12,8 @@ export { default as ChangePassword } from "./ChangePassword";
 export { default as Deactivate } from "./Deactivate";
 export { default as Users } from "./Users";
 export { default as Vendors } from "./Vendors";
+export { default as Orders } from "./Orders";
+export { default as Invoices } from "./Invoices";
+export { default as Order } from "./Order";
+export { default as Invoice } from "./Invoice";
+export { default as NotFound } from "./NotFound";

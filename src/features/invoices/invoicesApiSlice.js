@@ -1,8 +1,8 @@
 import { apiSlice } from "../../app/api/apiSlice";
 
-export const ordersApiSlice = apiSlice.injectEndpoints({
+export const invoicesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getOrders: builder.query({
+    getInvoices: builder.query({
       query: ({ sort, limit, page }) => {
         const params = new URLSearchParams();
 
@@ -11,7 +11,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         if (page) params.append("page", page);
 
         return {
-          url: `/orders/?${params.toString()}`,
+          url: `/invoices/?${params.toString()}`,
           validateStatus: (response, result) =>
             response.status === 200 && !result.isError,
         };
@@ -19,18 +19,18 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => ({
         result: response.result,
         total: response.total,
-        orders: response.data.orders.map((order) => ({
-          ...order,
-          id: order._id,
+        invoices: response.data.invoices.map((invoice) => ({
+          ...invoice,
+          id: invoice._id,
         })),
       }),
     }),
 
-    getOrder: builder.query({
-      query: ({ id }) => `/orders/${id}`,
-      transformResponse: (response) => response.data.order,
+    getInvoice: builder.query({
+      query: ({ id }) => `/invoices/${id}`,
+      transformResponse: (response) => response.data.invoice,
     }),
   }),
 });
 
-export const { useGetOrdersQuery, useGetOrderQuery } = ordersApiSlice;
+export const { useGetInvoicesQuery, useGetInvoiceQuery } = invoicesApiSlice;

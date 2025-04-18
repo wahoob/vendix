@@ -9,7 +9,7 @@ const RecentReviews = () => {
   const { isError, isFetching, isLoading, isSuccess, error, data } =
     useGetAllReviewsQuery({ sort: "-updatedAt", limit: 5 });
 
-  const recentReviews = useRecentReviews(data || []);
+  const recentReviews = useRecentReviews(data?.reviews || []);
 
   const customizedContent = (item) => (
     <div className="row gap-4">

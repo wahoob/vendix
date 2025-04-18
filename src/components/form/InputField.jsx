@@ -31,7 +31,7 @@ const InputField = ({
           "w-full row gap-3",
           "border px-5 py-[11px] rounded-lg",
           error ? "border-red-400" : "border-[#E0E2E9]",
-          getClassNames(pt, "root")
+          getClassNames(pt, "root"),
         )}
       >
         {icon && (
@@ -39,7 +39,7 @@ const InputField = ({
             className={classNames(
               "text-[#ADB0CD]",
               icon,
-              getClassNames(pt, "icon")
+              getClassNames(pt, "icon"),
             )}
           />
         )}
@@ -54,7 +54,7 @@ const InputField = ({
           className={classNames(
             "w-full flex-1 outline-none",
             "text-sm placeholder:text-[#969AB8]",
-            getClassNames(pt, "input")
+            getClassNames(pt, "input"),
           )}
         />
         {type === "password" && (
@@ -65,7 +65,7 @@ const InputField = ({
                 "pi-eye-slash": show,
                 "pi-eye": !show,
               },
-              getClassNames(pt, "showIcon")
+              getClassNames(pt, "showIcon"),
             )}
             onClick={() => setShow(!show)}
           />

@@ -7,7 +7,7 @@ import useHorizontalScroll from "../hooks/useHorizontalScroll";
 
 const CategoryNavigationBar = ({ selected, onChange }) => {
   const { isError, error, isLoading, isSuccess, data, isFetching } =
-    useGetCategoriesQuery();
+    useGetCategoriesQuery({});
   const {
     translate,
     isLeftVisible,
@@ -33,7 +33,7 @@ const CategoryNavigationBar = ({ selected, onChange }) => {
                 "absolute left-0 top-1/2 -translate-y-1/2 z-30",
                 "row justify-start w-10",
                 "bg-gradient-to-r from-white from-50% to-transparent",
-                "cursor-pointer"
+                "cursor-pointer",
               )}
               onClick={slideLeft}
             ></i>
@@ -44,7 +44,7 @@ const CategoryNavigationBar = ({ selected, onChange }) => {
             style={{ transform: `translateX(${-translate}px)` }}
             ref={containerRef}
           >
-            {data.map((category) => {
+            {data.categories.map((category) => {
               const { id } = category;
               const isSelected = Array.isArray(selected)
                 ? selected.includes(id)
@@ -56,7 +56,7 @@ const CategoryNavigationBar = ({ selected, onChange }) => {
                     "font-semibold",
                     "capitalize hover:text-[#3BB77E]",
                     "cursor-pointer whitespace-nowrap",
-                    isSelected ? "text-[#3BB77E]" : "text-[#253D4E]"
+                    isSelected ? "text-[#3BB77E]" : "text-[#253D4E]",
                   )}
                   onClick={() => onChange(category.id)}
                 >
@@ -73,7 +73,7 @@ const CategoryNavigationBar = ({ selected, onChange }) => {
                 "absolute right-0 top-1/2 -translate-y-1/2 z-30",
                 "row justify-end w-10",
                 "bg-gradient-to-l from-white from-50% to-transparent",
-                "cursor-pointer"
+                "cursor-pointer",
               )}
               onClick={slideRight}
             ></i>

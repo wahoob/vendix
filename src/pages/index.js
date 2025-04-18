@@ -16,4 +16,6 @@ export { default as Orders } from "./Orders";
 export { default as Invoices } from "./Invoices";
 export { default as Order } from "./Order";
 export { default as Invoice } from "./Invoice";
+export { default as Reviews } from "./Reviews";
+export { default as Categories } from "./Categories";
 export { default as NotFound } from "./NotFound";

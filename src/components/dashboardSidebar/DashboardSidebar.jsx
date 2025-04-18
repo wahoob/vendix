@@ -110,6 +110,28 @@ const DashboardSidebar = ({ isOpen, close }) => {
         },
       ],
     },
+    {
+      key: "products",
+      label: "products",
+      icon: "pi pi-shopping-bag",
+      items: [
+        {
+          key: "products",
+          label: "view all products",
+          icon: "pi pi-circle-fill",
+        },
+        {
+          key: "new-product",
+          label: "add product",
+          icon: "pi pi-circle-fill",
+        },
+        {
+          key: "my-products",
+          label: "my products",
+          icon: "pi pi-circle-fill",
+        },
+      ],
+    },
   ];
 
   items.forEach((headerAction) => {

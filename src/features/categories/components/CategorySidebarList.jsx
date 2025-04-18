@@ -7,14 +7,14 @@ import { useGetCategoriesQuery } from "../categoriesApiSlice";
 
 const CategorySidebarList = () => {
   const { isLoading, data, isError, isSuccess, error, isFetching } =
-    useGetCategoriesQuery();
+    useGetCategoriesQuery({});
 
   return (
     <div
       className={classNames(
         "border border-[#ECECEC] rounded-2xl shadow-shadow1",
         "h-[28.1rem] overflow-y-auto overflow-x-hidden",
-        "space-y-[30px] relative"
+        "space-y-[30px] relative",
       )}
     >
       <TitleLabel title="Category" />
@@ -29,7 +29,7 @@ const CategorySidebarList = () => {
             error={error}
             render={() => (
               <div className="flex flex-col gap-[15px]">
-                {data.map((category) => (
+                {data.categories.map((category) => (
                   <CategorySidebarItem key={category.id} {...category} />
                 ))}
               </div>

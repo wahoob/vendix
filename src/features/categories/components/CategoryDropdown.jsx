@@ -6,7 +6,7 @@ import { useGetCategoriesQuery } from "../categoriesApiSlice";
 
 const CategoryDropdown = ({ selectedCategory, setSelectedCategory }) => {
   const { isLoading, data, isError, isSuccess, isFetching } =
-    useGetCategoriesQuery();
+    useGetCategoriesQuery({});
 
   let placeholderText;
   if (isLoading || isFetching) {
@@ -18,7 +18,7 @@ const CategoryDropdown = ({ selectedCategory, setSelectedCategory }) => {
   }
   useEffect(() => {
     if (isSuccess) {
-      setSelectedCategory(data[0]);
+      setSelectedCategory(data.categories[0]);
     }
   }, [isSuccess, data, setSelectedCategory]);
 
@@ -27,7 +27,7 @@ const CategoryDropdown = ({ selectedCategory, setSelectedCategory }) => {
       loading={isLoading || isFetching}
       placeholder={placeholderText}
       onChange={(e) => setSelectedCategory(e.value)}
-      options={data}
+      options={data?.categories}
       value={selectedCategory}
       optionLabel="name"
       pt={{
@@ -43,7 +43,7 @@ const CategoryDropdown = ({ selectedCategory, setSelectedCategory }) => {
             "size-2",
             isError
               ? "text-red-500"
-              : "text-[#7E7E7E] group-hover:text-neutral-800"
+              : "text-[#7E7E7E] group-hover:text-neutral-800",
           ),
         },
         item: {

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   Cart,
+  Categories,
   ChangePassword,
   Dashboard,
   Deactivate,
@@ -19,6 +20,7 @@ import {
   VerifyEmail,
   Wishlist,
   Invoice,
+  Reviews,
   NotFound,
 } from "../pages";
 
@@ -157,6 +159,14 @@ const router = createBrowserRouter([
                     element: <Invoice />,
                   },
                 ],
+              },
+              {
+                path: "reviews",
+                element: <Reviews />,
+              },
+              {
+                path: "categories",
+                element: <Categories />,
               },
             ],
           },

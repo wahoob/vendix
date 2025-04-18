@@ -20,7 +20,7 @@ const Vendors = () => {
         />
       )}
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold mb-1">Users list</h1>
+        <h1 className="text-4xl font-bold mb-1">Vendors list</h1>
 
         <div className="card">
           <VendorsList show={showUpdatePrompt} />

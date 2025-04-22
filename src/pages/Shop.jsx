@@ -1,5 +1,5 @@
 import { BreadCrumbNav, Sidebar } from "../components";
-import { ProductsList, ProductFilterSearch } from "../features/products";
+import { ProductsShopList, ProductFilterSearch } from "../features/products";
 
 const Shop = () => {
   return (
@@ -14,7 +14,7 @@ const Shop = () => {
         <div className="flex">
           <Sidebar />
 
-          <ProductsList />
+          <ProductsShopList />
         </div>
       </div>
     </>

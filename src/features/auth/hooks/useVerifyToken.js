@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useMountEffect } from "primereact/hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useRefetchMutation } from "../authApiSlice";
 import { usePersist } from "../../../hooks";
@@ -25,13 +25,6 @@ const useVerifyToken = () => {
 
     if (!token && persist) verifyRefreshToken();
   });
-
-  useEffect(() => {
-    console.log("isUnintialized: ", isUninitialized);
-  }, [isUninitialized]);
-  useEffect(() => {
-    console.log("isLoading: ", isLoading);
-  }, [isLoading]);
 
   return { isLoading: isLoading || isUninitialized };
 };

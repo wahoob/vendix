@@ -15,7 +15,7 @@ const App = () => {
             },
             dropdown: {
               root: {
-                className: "border-none shadow-none row justify-between group",
+                className: "shadow-none row justify-between group",
               },
               input: {
                 className: "p-0 font-lato",
@@ -59,7 +59,7 @@ const App = () => {
                     "border-[#CC8925]":
                       state.messages[index] &&
                       state.messages[index].message.severity == "warn",
-                  }
+                  },
                 ),
               }),
               content: "text-left",

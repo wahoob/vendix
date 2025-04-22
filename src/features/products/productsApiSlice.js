@@ -34,13 +34,23 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           validateStatus: (response, result) =>
             response.status === 200 && !result.isError,
         };
-        // TODO: edit the response
       },
+      transformResponse: (response) => ({
+        result: response.result,
+        total: response.total,
+        products: response.data.products.map((product) => ({
+          ...product,
+          id: product._id,
+        })),
+      }),
       providesTags: (result) => {
-        if (result?.length) {
+        if (result?.products?.length) {
           return [
             { type: "Product", id: "LIST" },
-            ...result.map((product) => ({ type: "Product", id: product.id })),
+            ...result.products.map((product) => ({
+              type: "Product",
+              id: product.id,
+            })),
           ];
         } else return [{ type: "Product", id: "LIST" }];
       },
@@ -120,6 +130,23 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       transformResponse: (response) => response.data,
     }),
+
+    updateProduct: builder.mutation({
+      query: ({ id, ...patch }) => ({
+        url: `/products/${id}`,
+        method: "PATCH",
+        body: patch,
+      }),
+      invalidatesTags: (_result, _error, { id }) => [{ type: "Product", id }],
+    }),
+
+    deleteProduct: builder.mutation({
+      query: ({ id }) => ({
+        url: `/products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (_result, _error, { id }) => [{ type: "Product", id }],
+    }),
   }),
 });
 
@@ -132,4 +159,6 @@ export const {
   useGetDealsQuery,
   useGetProductBySlugQuery,
   useGetProductsOverviewQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
 } = productsApiSlice;

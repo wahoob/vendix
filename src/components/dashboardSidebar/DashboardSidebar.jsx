@@ -121,12 +121,12 @@ const DashboardSidebar = ({ isOpen, close }) => {
           icon: "pi pi-circle-fill",
         },
         {
-          key: "new-product",
+          key: "products/new",
           label: "add product",
           icon: "pi pi-circle-fill",
         },
         {
-          key: "my-products",
+          key: "products/my-products",
           label: "my products",
           icon: "pi pi-circle-fill",
         },

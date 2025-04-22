@@ -50,8 +50,8 @@ const ReviewsList = () => {
             rating={{ ratingsAverage: rating }}
             pt={{
               item: "size-4",
-              onIcon: "text-[#3BB77E]",
-              offIcon: "text-[#3BB77E]",
+              onIcon: "text-[#FF7C0B]",
+              offIcon: "text-[#FF7C0B]",
             }}
           />
         )}

@@ -35,7 +35,7 @@ const NumberInput = ({
       className={twMerge(
         "border-2 border-[#3BB77E] rounded-[5px] overflow-hidden",
         "row gap-2 pl-1 pr-4 py-1.5",
-        getClassNames(pt, "root")
+        getClassNames(pt, "root"),
       )}
     >
       {loading ? (
@@ -46,7 +46,7 @@ const NumberInput = ({
             type="number"
             className={twMerge(
               "outline-none text-center w-12",
-              getClassNames(pt, "input")
+              getClassNames(pt, "input"),
             )}
             value={value}
             onChange={handleInputChange}
@@ -56,7 +56,7 @@ const NumberInput = ({
             className={twMerge(
               "row flex-col gap-3",
               "[&_*]:text-[#3BB77E] [&_*]:text-[9px] [&_*]:cursor-pointer",
-              getClassNames(pt, "arrowsContainer")
+              getClassNames(pt, "arrowsContainer"),
             )}
           >
             <i className="pi pi-chevron-up" onClick={handleIncrement} />

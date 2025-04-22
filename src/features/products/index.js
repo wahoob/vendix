@@ -5,12 +5,16 @@ export { default as TopSellingCategories } from "./components/TopSellingCategori
 export { default as PopularProducts } from "./components/PopularProducts";
 export { default as DealsProducts } from "./components/DealsProducts";
 export { default as ProductDetails } from "./components/ProductDetails";
-export { default as ProductsList } from "./components/ProductsList";
+export { default as ProductsShopList } from "./components/ProductsShopList";
 export { default as ProductFilterSearch } from "./components/ProductFilterSearch";
 export { default as ProductLookup } from "./components/ProductLookup";
 export { default as BrandOptions } from "./components/BrandOptions";
 export { default as PriceSlider } from "./components/PriceSlider";
 export { default as ProductsInOrder } from "./components/ProductsInOrder";
+export { default as ProductsList } from "./components/ProductsList";
+export { default as ProductForm } from "./components/ProductForm";
+export { default as ProductCreate } from "./components/ProductCreate";
+export { default as ProductUpdate } from "./components/ProductUpdate";
 
 export {
   useGetProductsQuery,

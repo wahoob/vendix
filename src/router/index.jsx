@@ -5,7 +5,6 @@ import {
   Categories,
   ChangePassword,
   Dashboard,
-  Deactivate,
   Home,
   Invoices,
   Login,
@@ -22,6 +21,9 @@ import {
   Invoice,
   Reviews,
   NotFound,
+  AddProduct,
+  MyProducts,
+  Products,
 } from "../pages";
 
 import {
@@ -114,10 +116,6 @@ const router = createBrowserRouter([
                     path: "password",
                     element: <ChangePassword />,
                   },
-                  {
-                    path: "deactivate",
-                    element: <Deactivate />,
-                  },
                 ],
               },
               {
@@ -167,6 +165,23 @@ const router = createBrowserRouter([
               {
                 path: "categories",
                 element: <Categories />,
+              },
+              {
+                path: "products",
+                children: [
+                  {
+                    index: true,
+                    element: <Products />,
+                  },
+                  {
+                    path: "new",
+                    element: <AddProduct />,
+                  },
+                  {
+                    path: "my-products",
+                    element: <MyProducts />,
+                  },
+                ],
               },
             ],
           },

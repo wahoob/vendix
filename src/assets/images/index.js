@@ -6,3 +6,4 @@ export { default as googlePlay } from "./google-play.jpeg";
 export { default as person } from "./person.jpg";
 export { default as sentEmail } from "./sent-email.png";
 export { default as error404 } from "./page-404.png";
+export { default as placeholderImage } from "./no-image-preview.png";

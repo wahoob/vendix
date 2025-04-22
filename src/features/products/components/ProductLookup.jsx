@@ -32,7 +32,7 @@ const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {
       searchTerm: debouncedSearchTerm,
       selectedCategory: selectedCategory?.id !== "all" && selectedCategory.id,
     },
-    { skip: !isInputFocused }
+    { skip: !isInputFocused },
   );
 
   const handleChange = (e) => {
@@ -52,7 +52,7 @@ const ProductLookup = ({ showFullWidth, setShowFullWidth }) => {
         className={classNames(
           "border-2 border-[#BCE3C9] rounded",
           "py-[17px] px-[22px]",
-          "row gap-4 w-full relative"
+          "row gap-4 w-full relative",
         )}
       >
         <CategoryDropdown

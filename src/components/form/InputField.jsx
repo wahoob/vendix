@@ -9,6 +9,7 @@ const InputField = ({
   name,
   initialValue = "",
   type = "text",
+  decimal = false,
   disabled = false,
   register,
   placeholder,
@@ -50,6 +51,7 @@ const InputField = ({
           defaultValue={initialValue}
           disabled={disabled}
           placeholder={placeholder}
+          step={decimal && type === "number" ? "0.01" : null}
           {...(register ? register(name) : null)}
           className={classNames(
             "w-full flex-1 outline-none",

@@ -21,4 +21,5 @@ export { default as Categories } from "./Categories";
 export { default as Products } from "./Products";
 export { default as AddProduct } from "./AddProduct";
 export { default as MyProducts } from "./MyProducts";
+export { default as Vendor } from "./Vendor";
 export { default as NotFound } from "./NotFound";

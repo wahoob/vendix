@@ -24,6 +24,7 @@ import {
   AddProduct,
   MyProducts,
   Products,
+  Vendor,
 } from "../pages";
 
 import {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
                 element: <Wishlist />,
               },
             ],
+          },
+          {
+            path: "vendors/:id",
+            element: <Vendor />,
           },
         ],
       },

@@ -15,6 +15,7 @@ export { default as ProductsList } from "./components/ProductsList";
 export { default as ProductForm } from "./components/ProductForm";
 export { default as ProductCreate } from "./components/ProductCreate";
 export { default as ProductUpdate } from "./components/ProductUpdate";
+export { default as SellerProducts } from "./components/SellerProducts";
 
 export {
   useGetProductsQuery,

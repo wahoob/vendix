@@ -13,7 +13,7 @@ const ProductTabs = ({ salesCount, reviews, rating, id, vendor }) => {
         className={classNames(
           "cursor-pointer border border-[#ECECEC] rounded-full",
           "py-2 px-8",
-          options.selected && "shadow-shadow1"
+          options.selected && "shadow-shadow1",
         )}
         onClick={options.onClick}
       >
@@ -23,7 +23,7 @@ const ProductTabs = ({ salesCount, reviews, rating, id, vendor }) => {
             {
               "text-[#3BB77E]": options.selected,
               "text-[#7E7E7E]": !options.selected,
-            }
+            },
           )}
         >
           {header}
@@ -50,7 +50,12 @@ const ProductTabs = ({ salesCount, reviews, rating, id, vendor }) => {
         />
       </TabPanel>
       <TabPanel header="Vendor" headerTemplate={tabHeaderTemplate}>
-        <VendorOverview {...vendor} />
+        <VendorOverview
+          {...vendor}
+          pt={{
+            image: "left-4",
+          }}
+        />
       </TabPanel>
     </TabView>
   );

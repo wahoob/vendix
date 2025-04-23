@@ -10,10 +10,15 @@ import {
 } from "../../../components";
 
 import { useGetVendorQuery } from "../vendorsApiSlice";
+import { useNavigate } from "react-router-dom";
+import { getClassNames } from "../../../utils/functions.utils";
+import { twMerge } from "tailwind-merge";
 
-const VendorOverview = ({ _id: id }) => {
+const VendorOverview = ({ _id: id, pt }) => {
   const { isLoading, isError, isFetching, isSuccess, error, data } =
     useGetVendorQuery({ id });
+
+  const navigate = useNavigate();
 
   const content = () => {
     const {
@@ -26,7 +31,7 @@ const VendorOverview = ({ _id: id }) => {
     const { country, city, state, street } = businessAddress;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 text-[#383E50]">
         <div className="w-full h-36 bg-[#FEC040] rounded-t-md max-md:hidden" />
 
         <div>
@@ -34,13 +39,15 @@ const VendorOverview = ({ _id: id }) => {
             className={classNames(
               "flex items-start justify-between gap-8 flex-wrap",
               "border-b-2 pb-8",
+              getClassNames(pt, "topSection"),
             )}
           >
             <div className="relative flex flex-wrap gap-4">
               <div
-                className={classNames(
+                className={twMerge(
                   "size-44 min-w-44 rounded-[5px] overflow-hidden shadow-shadow6",
-                  "md:absolute -bottom-2 left-4 mx-auto",
+                  "md:absolute -bottom-2 left-0 mx-auto",
+                  getClassNames(pt, "image"),
                 )}
               >
                 <img
@@ -60,38 +67,27 @@ const VendorOverview = ({ _id: id }) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1 [&>*]:w-36 [&>*]:mx-auto">
-              <Button
-                severity="contrast"
-                label="Actions"
-                icon="pi pi-angle-down"
-                iconPos="right"
-                pt={{
-                  root: {
-                    className: "bg-[#F4F5F9] px-4 py-2.5 rounded-[5px]",
-                  },
-                  label: {
-                    className: "text-black text-xs font-normal",
-                  },
-                }}
-              />
-              <Button
-                severity="success"
-                label="View Profile"
-                pt={{
-                  root: {
-                    className:
-                      "bg-[#3BB77E] hover:bg-[#319969] px-4 py-2.5 rounded-[5px]",
-                  },
-                  label: {
-                    className: "text-white text-xs font-normal",
-                  },
-                }}
-              />
-            </div>
+            <Button
+              severity="success"
+              label="View Profile"
+              pt={{
+                root: classNames(
+                  "bg-[#3BB77E] hover:bg-[#319969]",
+                  "w-36 rounded-[5px] px-4 py-2.5",
+                  getClassNames(pt, "button"),
+                ),
+                label: "text-white text-xs font-normal",
+              }}
+              onClick={() => navigate(`/vendors/${id}`)}
+            />
           </div>
 
-          <div className="flex flex-wrap gap-20 py-5">
+          <div
+            className={classNames(
+              "flex flex-wrap gap-20 py-5",
+              getClassNames(pt, "bottomSection"),
+            )}
+          >
             <div className="rounded-md space-y-1">
               <p className="text-sm font-quicksand font-bold">Rating:</p>
               <Rating

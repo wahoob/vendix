@@ -1,4 +1,5 @@
 import { classNames } from "primereact/utils";
+import { useEffect } from "react";
 
 import { AsyncContentWrapper, SelectableOption } from "../../../components";
 
@@ -9,6 +10,18 @@ const VendorOptions = ({ selectedVendors, setSelectedVendors }) => {
     useGetVendorsQuery({
       fields: "businessName",
     });
+
+  useEffect(() => {
+    if (isSuccess && data && selectedVendors.length > 0) {
+      const validVendorIds = data.vendors.map((vendor) => vendor.id);
+      const validVendors = selectedVendors.filter((vendorId) =>
+        validVendorIds.includes(vendorId),
+      );
+      if (validVendors.length !== selectedVendors.length) {
+        setSelectedVendors(validVendors);
+      }
+    }
+  }, [isSuccess, data, selectedVendors, setSelectedVendors]);
 
   const onCheckboxChange = (id) => {
     setSelectedVendors((prev) =>

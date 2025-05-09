@@ -8,14 +8,15 @@ const AsyncContentWrapper = ({
   isError,
   error,
   render,
+  loadingComponent,
 }) => {
   let content;
   if (isLoading || (isFetching && loadOnFetch)) {
-    content = (
+    content = loadingComponent || (
       <i
         className={classNames(
           "pi pi-spin pi-spinner-dotted",
-          "text-3xl text-center w-full"
+          "text-3xl text-center w-full",
         )}
       ></i>
     );
@@ -27,7 +28,7 @@ const AsyncContentWrapper = ({
       <i
         className={classNames(
           "pi pi-exclamation-circle",
-          "text-3xl text-center text-red-500 w-full"
+          "text-3xl text-center text-red-500 w-full",
         )}
       ></i>
     );

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectFilters } from "../productSlice";
 import { Toast } from "primereact/toast";
+import { Skeleton } from "primereact/skeleton";
 
 import { Browse, Sort } from "../../../utils/icons.utils";
 
@@ -152,51 +153,81 @@ const ProductsShopList = () => {
           </div>
         </div>
 
-        <div>
+        <div className="space-y-12">
+          <div
+            className={classNames(
+              "grid grid-cols-[repeat(auto-fill,minmax(11rem,1fr))]",
+              "md:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))]",
+              "gap-x-6 gap-y-[1.875rem]",
+            )}
+          >
+            <AsyncContentWrapper
+              isFetching={isFetching}
+              loadOnFetch={!isLimitFetching}
+              isLoading={isLoading}
+              isError={isError}
+              isSuccess={isSuccess}
+              error={error}
+              render={() =>
+                data.products.map((product) => (
+                  <ProductView
+                    key={product.id}
+                    {...product}
+                    product={product}
+                    gridView={false}
+                    toast={toast}
+                  />
+                ))
+              }
+              loadingComponent={Array.from({ length: 10 }).map((_, i) => (
+                <div key={i} className="h-[25.8rem] flex flex-col">
+                  <div className="flex-1">
+                    <Skeleton height="12rem" className="mb-2" />
+                    <Skeleton height="1rem" width="3rem" className="mb-2" />
+                    <Skeleton height="1rem" width="90%" className="mb-2" />
+                    <Skeleton height="1rem" width="50%" className="mb-2" />
+                    <Skeleton height="1rem" width="60%" className="mb-2" />
+                  </div>
+                  <div className="row justify-between">
+                    <Skeleton height="1rem" width="5rem" />
+                    <Skeleton height="2rem" width="6rem" />
+                  </div>
+                </div>
+              ))}
+            />
+          </div>
+          {isLimitFetching && "Loading..."}
+
           <AsyncContentWrapper
             isFetching={isFetching}
-            loadOnFetch={!isLimitFetching}
             isLoading={isLoading}
+            loadingComponent={[]}
             isError={isError}
             isSuccess={isSuccess}
             error={error}
+            loadOnFetch={false}
             render={() => (
-              <div className="space-y-12">
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(11rem,1fr))] md:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-6 gap-y-[1.875rem]">
-                  {data.products.map((product) => (
-                    <ProductView
-                      key={product.id}
-                      {...product}
-                      product={product}
-                      gridView={false}
-                      toast={toast}
-                    />
-                  ))}
-                </div>
-                {isLimitFetching && "Loading..."}
-
-                <div className="w-fit">
-                  <Paginator
-                    totalRecords={data.total}
-                    first={first}
-                    rows={selectedLimitValue}
-                    onPageChange={(e) => setFirst(e.first)}
-                    pt={{
-                      pages: { className: "row gap-[9px]" },
-                      pageButton: ({ context }) => ({
-                        className: classNames(
-                          "font-quicksand font-bold",
-                          "bg-[#F2F3F4] text-[#7E7E7E]",
-                          "size-10 min-w-0",
-                          {
-                            "bg-[#3BB77E] text-white": context.active,
-                            "hover:bg-neutral-200": !context.active,
-                          },
-                        ),
-                      }),
-                    }}
-                  />
-                </div>
+              <div className="w-fit">
+                <Paginator
+                  totalRecords={data.total}
+                  first={first}
+                  rows={selectedLimitValue}
+                  onPageChange={(e) => setFirst(e.first)}
+                  pt={{
+                    pages: { className: "row gap-[9px]" },
+                    pageButton: ({ context }) => ({
+                      className: classNames(
+                        "font-quicksand font-bold",
+                        "bg-[#F2F3F4] text-[#7E7E7E]",
+                        "size-10 min-w-0",
+                        {
+                          "bg-[#3BB77E] text-white": context.active,
+                          "hover:bg-neutral-200": !context.active,
+                        },
+                      ),
+                    }),
+                  }}
+                />
               </div>
             )}
           />

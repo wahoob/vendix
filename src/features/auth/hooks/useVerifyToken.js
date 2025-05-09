@@ -11,6 +11,7 @@ const useVerifyToken = () => {
   const [persist] = usePersist();
   const [refetch, { isUninitialized }] = useRefetchMutation();
   const [isLoading, setIsLoading] = useState(true);
+  const [verificationAttempted, setVerificationAttempted] = useState(false);
 
   useMountEffect(() => {
     const verifyRefreshToken = async () => {
@@ -20,13 +21,18 @@ const useVerifyToken = () => {
         console.error("Error details:", err.message || err.data || err);
       } finally {
         setIsLoading(false);
+        setVerificationAttempted(true);
       }
     };
 
     if (!token && persist) verifyRefreshToken();
+    else setIsLoading(false);
   });
-
-  return { isLoading: isLoading || isUninitialized };
+  return {
+    isLoading:
+      (isLoading || isUninitialized) &&
+      (!token && persist ? !verificationAttempted : false),
+  };
 };
 
 export default useVerifyToken;

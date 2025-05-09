@@ -12,9 +12,12 @@ const PriceSlider = ({ values, setValue }) => {
 
   useEffect(() => {
     if (isSuccess && data) {
-      setValue([data.minPrice, data.maxPrice]);
+      // Only set default values if the current values are empty or invalid
+      if (!values.length || (values[0] === 0 && values[1] === 0)) {
+        setValue([data.minPrice, data.maxPrice]);
+      }
     }
-  }, [isSuccess, data, setValue]);
+  }, [isSuccess, data, setValue, values]);
 
   const changeRange = (e) => setValue(e.value);
 
@@ -43,7 +46,7 @@ const PriceSlider = ({ values, setValue }) => {
           <div
             className={classNames(
               "row justify-between",
-              "text-sm text-[#7E7E7E]"
+              "text-sm text-[#7E7E7E]",
             )}
           >
             <p>

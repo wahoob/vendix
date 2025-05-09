@@ -1,4 +1,5 @@
 import { classNames } from "primereact/utils";
+import { Skeleton } from "primereact/skeleton";
 
 import { AsyncContentWrapper } from "../../../components";
 
@@ -80,6 +81,11 @@ const CategoryNavigationBar = ({ selected, onChange }) => {
           )}
         </div>
       )}
+      loadingComponent={
+        <div className="flex gap-4">
+          <Skeleton className="mt-4" />
+        </div>
+      }
     />
   );
 };

@@ -55,14 +55,10 @@ const UsersList = ({ show }) => {
     >
       <Column
         header="User"
-        body={({
-          fullName: { firstName, lastName },
-          username,
-          profilePicture,
-        }) => (
+        body={({ fullName: { firstName, lastName }, username, image }) => (
           <div className="row gap-4">
             <img
-              src={person}
+              src={image || person}
               alt={firstName}
               className="size-12 rounded-full object-cover"
             />
@@ -83,7 +79,7 @@ const UsersList = ({ show }) => {
           <div
             className={classNames(
               "text-[#006D0E] text-xs font-semibold capitalize",
-              "w-fit py-1 px-3 rounded-full bg-[#CCF0D1]"
+              "w-fit py-1 px-3 rounded-full bg-[#CCF0D1]",
             )}
           >
             {status}

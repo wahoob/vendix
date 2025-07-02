@@ -19,8 +19,7 @@ const profileSchema = yup.object().shape({
       },
     }),
   email: yup.string().email().required(),
-  profilePicture: yup.mixed().notRequired(),
-  role: yup.string().oneOf(roles).required(),
+  image: yup.mixed().notRequired(),
 });
 
 export default profileSchema;

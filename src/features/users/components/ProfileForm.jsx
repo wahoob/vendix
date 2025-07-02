@@ -15,7 +15,13 @@ import { getChangedFields } from "../../../utils/functions.utils";
 
 import profileSchema from "../validations/profileSchema";
 
-const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+const allowedTypes = [
+  "image/png",
+  "image/jpeg",
+  "image/jpg",
+  "image/webp",
+  "image/gif",
+];
 const sizeLimit = 5 * 1024 * 1024;
 
 const ProfileForm = ({ show }) => {
@@ -49,42 +55,22 @@ const ProfileForm = ({ show }) => {
     try {
       const changedFields = getChangedFields({ dirtyFields, data });
 
-      const operations = [
-        changedFields.email && {
-          fn: updateEmail,
-          payload: { email: changedFields.email },
-          afterSuccess: () => show({ email: data.email }),
-        },
-        Object.keys(changedFields).length > 0 && {
-          fn: updateMe,
-          payload: (() => {
-            const {
-              email: _email,
-              firstName,
-              lastName,
-              ...rest
-            } = changedFields;
-            return {
-              ...rest,
-              ...(firstName || lastName
-                ? {
-                    fullName: {
-                      firstName: data.firstName,
-                      lastName: data.lastName,
-                    },
-                  }
-                : {}),
-            };
-          })(),
-        },
-      ].filter(Boolean);
+      if (changedFields.email) {
+        await updateEmail({ email: changedFields.email }).unwrap();
+        show({ email: data.email });
+      }
 
-      await Promise.all(
-        operations.map(async ({ fn, payload, afterSuccess }) => {
-          await fn(payload).unwrap();
-          if (afterSuccess) afterSuccess();
-        }),
-      );
+      const { email: _email, ...otherFields } = changedFields;
+
+      if (Object.keys(otherFields).length > 0) {
+        const formData = new FormData();
+
+        Object.entries(otherFields).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
+
+        await updateMe(formData).unwrap();
+      }
 
       reset({ ...data });
       // TODO: Prompt of success.
@@ -104,7 +90,7 @@ const ProfileForm = ({ show }) => {
       fileUploaded.size <= sizeLimit
     ) {
       setFile(fileUploaded);
-      setValue("profilePicture", fileUploaded);
+      setValue("image", fileUploaded);
     }
   };
 
@@ -122,7 +108,7 @@ const ProfileForm = ({ show }) => {
       isLoading={isLoading}
       isSuccess={isSuccess}
       render={() => {
-        const { fullName, username, phone, email } = userData;
+        const { fullName, username, phone, email, image } = userData;
 
         return (
           <form
@@ -189,7 +175,7 @@ const ProfileForm = ({ show }) => {
 
               <div className="mx-auto max-md:order-first row flex-col gap-6">
                 <img
-                  src={file ? URL.createObjectURL(file) : person}
+                  src={file ? URL.createObjectURL(file) : image || person}
                   alt="person"
                   className="size-52 lg:size-60 object-cover rounded-full"
                 />
@@ -209,10 +195,10 @@ const ProfileForm = ({ show }) => {
                   <input
                     type="file"
                     accept="image/*"
-                    name="profilePicture"
+                    name="image"
                     placeholder="Type here"
                     className="hidden"
-                    {...register("profilePicture", {
+                    {...register("image", {
                       onChange: handleFileChange,
                       value: file,
                     })}

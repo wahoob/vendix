@@ -7,12 +7,14 @@ import { useRef } from "react";
 import { logo, person } from "../../assets/images";
 
 import { useSendLogoutMutation } from "../../features/auth";
+import { useGetMeQuery } from "../../features/users";
 
 const DashboardNavbar = ({ toggle }) => {
   const menuRef = useRef(null);
   const navigate = useNavigate();
 
   const [logout] = useSendLogoutMutation();
+  const { data } = useGetMeQuery();
 
   const sendLogout = async () => {
     await logout().unwrap();
@@ -63,7 +65,7 @@ const DashboardNavbar = ({ toggle }) => {
           onClick={(e) => menuRef.current.toggle(e)}
         >
           <img
-            src={person}
+            src={data?.image || person}
             alt="person"
             className="size-9 rounded-full object-cover"
           />

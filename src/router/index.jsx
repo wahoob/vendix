@@ -27,6 +27,8 @@ import {
   Vendor,
 } from "../pages";
 
+import { homeLoader } from "../pages/homeLoader";
+
 import {
   AuthWrapper,
   PageContainer,

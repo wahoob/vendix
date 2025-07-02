@@ -1,6 +1,6 @@
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,31 +10,27 @@ import { VendorOptions } from "../../features/vendors";
 import { BrandOptions, PriceSlider } from "../../features/products";
 import { TitleLabel } from "../";
 
-import { setFilters, selectFilters } from "../../features/products";
+import { setFilters } from "../../features/products";
+import { selectSidebar } from "../../features/sidebar/sidebarSlice";
 
 const FilterList = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const filters = useSelector(selectFilters);
+
+  const sidebarState = useSelector(selectSidebar);
 
   const [selectedVendors, setSelectedVendors] = useState(
-    filters.vendors ? filters.vendors.split(",") : [],
+    sidebarState.vendors ? sidebarState.vendors.split(",") : [],
   );
   const [selectedBrands, setSelectedBrands] = useState(
-    filters.brands ? filters.brands.split(",") : [],
+    sidebarState.brands ? sidebarState.brands.split(",") : [],
   );
   const [rangeValues, setRangeValues] = useState(
-    filters.range.length ? filters.range : [0, 0],
+    sidebarState.range && sidebarState.range.length
+      ? sidebarState.range
+      : [0, 0],
   );
-
-  useEffect(() => {
-    setSelectedVendors(filters.vendors ? filters.vendors.split(",") : []);
-    setSelectedBrands(filters.brands ? filters.brands.split(",") : []);
-    if (filters.range.length) {
-      setRangeValues(filters.range);
-    }
-  }, [filters]);
 
   const filterAndNavigate = () => {
     dispatch(setFilters({ filterType: "range", value: rangeValues }));

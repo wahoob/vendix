@@ -17,9 +17,11 @@ import { useGetWishlistQuery } from "../../features/wishlist";
 import { useAuth } from "../../features/auth";
 
 const Navigation = () => {
-  const { data: cart } = useGetCartQuery();
-  const { data: wishlist } = useGetWishlistQuery();
   const { isLoggedIn, username } = useAuth();
+  const { data: cart } = useGetCartQuery(undefined, { skip: !isLoggedIn });
+  const { data: wishlist } = useGetWishlistQuery(undefined, {
+    skip: !isLoggedIn,
+  });
 
   const [selectedLocation, setSelectedLocation] = useState(1);
   const [showFullWidth, setShowFullWidth] = useState(false);
@@ -31,7 +33,7 @@ const Navigation = () => {
     <div
       className={classNames(
         "container py-5",
-        "row justify-between sm:gap-4 md:gap-9 2xl:gap-[4.4rem]"
+        "row justify-between sm:gap-4 md:gap-9 2xl:gap-[4.4rem]",
       )}
     >
       <div
@@ -54,13 +56,13 @@ const Navigation = () => {
       <div
         className={classNames(
           "row sm:gap-4 md:gap-6 2xl:gap-12",
-          showFullWidth ? "flex-1" : "md:flex-1"
+          showFullWidth ? "flex-1" : "md:flex-1",
         )}
       >
         <div
           className={classNames(
             "flex-1 row",
-            !showFullWidth && "max-md:hidden"
+            !showFullWidth && "max-md:hidden",
           )}
         >
           <ProductLookup
@@ -83,7 +85,7 @@ const Navigation = () => {
                 className: classNames(
                   "gap-2 max-xl:hidden",
                   "px-[14px] py-[10px]",
-                  "border border-[#ECECEC] border-solid shadow-shadow1"
+                  "border border-[#ECECEC] border-solid shadow-shadow1",
                 ),
               },
               trigger: {
@@ -94,7 +96,7 @@ const Navigation = () => {
             partClassNames={{
               root: classNames(
                 "flex gap-2.5",
-                "text-sm font-quicksand font-medium"
+                "text-sm font-quicksand font-medium",
               ),
               icon: "text-[#B6B6B6] w-[13px] h-[15px]",
               text: "text-[#3BB77E] group-hover:text-[#319969]",
@@ -109,26 +111,31 @@ const Navigation = () => {
                 severity="success"
                 onClick={() => setShowFullWidth(true)}
               />
-              <Divider className="h-6 bg-[#CACACA]" />
+
+              {isLoggedIn && <Divider className="h-6 bg-[#CACACA]" />}
             </li>
 
-            <li className="max-sm:hidden">
-              <TagButton
-                Icon={Heart}
-                badge={wishlist?.products.length || 0}
-                text={"Wishlist"}
-                to={"/wishlist"}
-              />
-            </li>
+            {isLoggedIn && (
+              <>
+                <li className="max-sm:hidden">
+                  <TagButton
+                    Icon={Heart}
+                    badge={wishlist?.products.length || 0}
+                    text={"Wishlist"}
+                    to={"/wishlist"}
+                  />
+                </li>
 
-            <li>
-              <TagButton
-                Icon={Cart}
-                badge={cart?.totalProducts || 0}
-                text={"Cart"}
-                to={"/cart"}
-              />
-            </li>
+                <li>
+                  <TagButton
+                    Icon={Cart}
+                    badge={cart?.totalProducts || 0}
+                    text={"Cart"}
+                    to={"/cart"}
+                  />
+                </li>
+              </>
+            )}
 
             <li className="max-sm:hidden">
               <TagButton

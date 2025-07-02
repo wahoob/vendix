@@ -67,10 +67,6 @@ const footerItems = [
         text: "Shipping Details",
         link: "",
       },
-      {
-        text: "Compare Products",
-        link: "",
-      },
     ],
   },
   {

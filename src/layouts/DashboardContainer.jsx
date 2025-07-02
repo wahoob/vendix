@@ -1,11 +1,18 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { classNames } from "primereact/utils";
-
 import { DashboardNavbar, DashboardSidebar } from "../components";
+import { Overlay } from "../components";
 
 const DashboardContainer = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const getInitialSidebarState = () => {
+    if (window.innerWidth < 1200) {
+      return false;
+    }
+    return true;
+  };
+
+  const [isOpen, setIsOpen] = useState(getInitialSidebarState);
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
   const closeSidebar = () => setIsOpen(false);
@@ -14,6 +21,8 @@ const DashboardContainer = () => {
     <div className="h-screen flex flex-col">
       <DashboardNavbar toggle={toggleSidebar} />
       <div className="flex flex-1 h-full overflow-y-auto">
+        <Overlay isOpen={isOpen} toggle={toggleSidebar} />
+
         <DashboardSidebar isOpen={isOpen} close={closeSidebar} />
         <div
           className={classNames(

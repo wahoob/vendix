@@ -1,25 +1,39 @@
 import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
 
-import { Compare, Cart, Person, Heart } from "../../utils/icons.utils";
+import { Cart, Person, Heart } from "../../utils/icons.utils";
 
 import { TitleLabel } from "../";
+import { useAuth } from "../../features/auth";
 
 const NavigationList = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
 
-  const items = [
-    { label: "Cart", Icon: Cart, command: () => navigate("/") },
-    { label: "Wishlist", Icon: Heart, command: () => navigate("/") },
-    { label: "Compare", Icon: Compare, command: () => navigate("/") },
-    { label: "Account", Icon: Person, command: () => navigate("/") },
-  ];
+  const items = [];
+  if (isLoggedIn) {
+    items.push(
+      { label: "Cart", Icon: Cart, command: () => navigate("/cart") },
+      { label: "Wishlist", Icon: Heart, command: () => navigate("/wishlist") },
+      {
+        label: "Settings",
+        Icon: Person,
+        command: () => navigate("/dashboard/profile-settings"),
+      },
+    );
+  } else {
+    items.push({
+      label: "Login",
+      Icon: Person,
+      command: () => navigate("/auth/login"),
+    });
+  }
 
   const content = (
     <div
       className={classNames(
         "font-quicksand text-[#253D4E] font-medium",
-        "px-[31px] space-y-1"
+        "px-[31px] space-y-1",
       )}
     >
       {items.map((item, index) => {
@@ -31,7 +45,7 @@ const NavigationList = () => {
               "row gap-2",
               "py-2 px-5",
               "border border-[#F2F3F4] rounded",
-              "cursor-pointer hover:shadow-shadow2 transition-all duration-300"
+              "cursor-pointer hover:shadow-shadow2 transition-all duration-300",
             )}
             onClick={command}
           >

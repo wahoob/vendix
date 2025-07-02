@@ -4,7 +4,7 @@ import { getClassNames } from "../../utils/functions.utils";
 
 const RatingStars = ({
   rating = {},
-  value, // Add value prop for controlled component
+  value,
   viewQuantity = false,
   pt = {},
   readOnly = true,
@@ -17,7 +17,6 @@ const RatingStars = ({
   const hasRating =
     rating.ratingsAverage !== undefined && rating.ratingsAverage !== null;
 
-  // Use value prop if provided (for controlled component), otherwise use ratingsAverage
   const currentValue = value !== undefined ? value : ratingsAverage;
 
   return (

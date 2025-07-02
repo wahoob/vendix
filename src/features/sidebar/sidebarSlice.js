@@ -1,9 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getInitialSidebarState = () => {
+  if (window.innerWidth < 1200) {
+    return false;
+  }
+  return true;
+};
+
 const sidebarSlice = createSlice({
   name: "sidebar",
   initialState: {
-    isOpen: true,
+    isOpen: getInitialSidebarState(),
   },
   reducers: {
     toggleSidebar(state) {

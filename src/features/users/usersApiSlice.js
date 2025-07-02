@@ -72,14 +72,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
         const selectedAddressId = getState().users.selectedAddressId;
         const idExist = response.data.addresses.find(
-          (addr) => addr._id === selectedAddressId
+          (addr) => addr._id === selectedAddressId,
         );
 
         if (!idExist) {
           dispatch(
             setAddress({
               addressId: response.data.addresses?.[0]?._id,
-            })
+            }),
           );
         }
       },
@@ -100,7 +100,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 draft[key] = args[key];
               }
             });
-          })
+          }),
         );
 
         try {
@@ -128,7 +128,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           dispatch(
             usersApiSlice.util.updateQueryData("getMe", undefined, (draft) => {
               draft.addresses.push(response.data.data.address);
-            })
+            }),
           );
           dispatch(setAddress({ addressId: response.data.data.address._id }));
         } catch {
@@ -146,15 +146,15 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
       onQueryStarted: async (
         { addressId, updatedAddress },
-        { dispatch, queryFulfilled }
+        { dispatch, queryFulfilled },
       ) => {
         const userResult = dispatch(
           usersApiSlice.util.updateQueryData("getMe", undefined, (draft) => {
             const address = draft.addresses.find(
-              (addr) => addr._id === addressId
+              (addr) => addr._id === addressId,
             );
             Object.assign(address, updatedAddress);
-          })
+          }),
         );
 
         try {
@@ -174,14 +174,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
       onQueryStarted: async (
         { addressId },
-        { dispatch, queryFulfilled, getState }
+        { dispatch, queryFulfilled, getState },
       ) => {
         const userResult = dispatch(
           usersApiSlice.util.updateQueryData("getMe", undefined, (draft) => {
             draft.addresses = draft.addresses.filter(
-              (addr) => addr._id !== addressId
+              (addr) => addr._id !== addressId,
             );
-          })
+          }),
         );
 
         try {
@@ -217,11 +217,11 @@ export const selectUserResult = usersApiSlice.endpoints.getMe.select();
 
 export const selectAddresses = createSelector(
   selectUserResult,
-  (userResult) => userResult.data?.addresses ?? []
+  (userResult) => userResult.data?.addresses ?? [],
 );
 
 export const selectCurrentAddress = createSelector(
   [selectAddress, selectAddresses],
   (selectedAddressId, addresses) =>
-    addresses.find((addr) => addr._id === selectedAddressId) ?? null
+    addresses.find((addr) => addr._id === selectedAddressId) ?? null,
 );

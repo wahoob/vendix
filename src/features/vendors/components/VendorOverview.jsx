@@ -1,7 +1,7 @@
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 
-import person from "../../../assets/images/person.jpg";
+import { person } from "../../../assets/images";
 
 import {
   AsyncContentWrapper,

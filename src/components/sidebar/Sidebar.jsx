@@ -20,30 +20,28 @@ const Sidebar = () => {
       <Overlay isOpen={isOpen} toggle={toggle} />
 
       <aside>
-        {/*  */}
         <div
           className={classNames(
             "max-lg:absolute left-0 top-0 z-50 transition-all ease-linear duration-300",
             "overflow-x-hidden bg-white h-full",
             isOpen
               ? "w-80 mr-5 translate-x-0"
-              : "max-lg:-translate-x-full lg:w-0"
+              : "max-lg:-translate-x-full lg:w-0",
           )}
         >
           <div
             className={classNames(
               "sticky top-0 z-40 bg-white",
-              "flex py-3 lg:hidden"
+              "flex py-3 lg:hidden",
             )}
           >
             <Button icon="pi pi-times" severity="success" onClick={toggle} />
           </div>
 
-          {/*  */}
           <div
             className={classNames(
               "flex overflow-x-hidden w-full",
-              "max-lg:pb-5 px-1"
+              "max-lg:pb-5 px-1",
             )}
           >
             {/*  */}

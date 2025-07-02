@@ -73,6 +73,28 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
 
       invalidatesTags: (_result, _error, { id }) => [{ type: "Review", id }],
     }),
+
+    canReview: builder.query({
+      query: (productId) => ({
+        url: `/reviews/can-review/${productId}`,
+        validateStatus: (response, result) =>
+          response.status === 200 && !result.isError,
+      }),
+    }),
+
+    addReview: builder.mutation({
+      query: ({ rating, comment, product }) => ({
+        url: "/reviews",
+        method: "POST",
+        body: { rating, comment, product },
+        validateStatus: (response, result) =>
+          response.status === 201 && !result.isError,
+      }),
+      invalidatesTags: (_result, _error, { product }) => [
+        { type: "Review", id: `PRODUCT_${product}` },
+        { type: "Review", id: "LIST" },
+      ],
+    }),
   }),
 });
 
@@ -80,4 +102,6 @@ export const {
   useLazyGetProductReviewsQuery,
   useGetAllReviewsQuery,
   useDeleteReviewMutation,
+  useCanReviewQuery,
+  useAddReviewMutation,
 } = reviewsApiSlice;

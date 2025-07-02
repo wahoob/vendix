@@ -57,18 +57,12 @@ const router = createBrowserRouter([
             element: <Product />,
           },
           {
-            path: "/",
-            element: <ProtectedLayout allowedRoles={["user", "vendor"]} />,
-            children: [
-              {
-                path: "cart",
-                element: <Cart />,
-              },
-              {
-                path: "wishlist",
-                element: <Wishlist />,
-              },
-            ],
+            path: "cart",
+            element: <Cart />,
+          },
+          {
+            path: "wishlist",
+            element: <Wishlist />,
           },
           {
             path: "vendors/:id",
